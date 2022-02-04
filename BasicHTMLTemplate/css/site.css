@@ -53,9 +53,63 @@ p, a{
 /* https://colorhunt.co/palette/6e3cbc7267cb98bae7b8e4f0 */
 
 .Main-Footer {
-  height: 80px;
+  height: 100px;
   width: 100vw;
   background-color: #98BAE7;
   position: absolute;
   bottom: 0;
+  /* Center contents of this div */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Footer-Content-Div {
+  height: inherit;
+  width: max-content;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.Copyright-Footer {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+.Copyright-Header {
+  font-size: 10px;
+  margin: 7px;
+}
+.Copyright-Text {
+  font-size: 10px
+}
+.Social-Icon{
+  height: 20px;
+  width: 20px;
+}
+.Social-Icon:hover {
+  transform: scale(1.2);
+}
+
+.Footer-Contact-Info-Text{
+  font-size: 12px;
+  margin: 10px;
+}
+.Footer-Contact-Info-Icon {
+  height: 15px;
+}
+.Vertical-Line {
+  height: 80%;
+  width: 1px;
+  background-color: #fff;
+  margin: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.Footer-Contact-Text {
+  font-size: 15px;
+  margin: 10px;
 }
