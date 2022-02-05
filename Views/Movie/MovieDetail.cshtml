@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <img src="https://i.ytimg.com/vi/MJuFdpVCcsY/movieposter_en.jpg" alt="movie" id="movieIMG"/>
+    </div>
+    <div class="col">
+      <h2 id="movieTitle"><span id="movieSpan">Books</span></h2>
+      <div class="container">
+        <div class="row">
+          <p class="col">Genre : <span id="movieGenre">lorem</span></p>
+        </div>
+        <div class="row">
+          <p class="col">Director : <span id="movieDirector"></span></p>
+        </div>
+        <div class="row">
+          <p class="col">Actor : <span id="movieActor"></span></p>
+        </div>
+        <div class="row">
+          <p class="col">Duration : <span id="movie"></span></p>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+<script>
+    const getMovie = async(movieID)=>{
+        const response = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getmovies?movieID=${movieID}`);
+        const data = await response.json();
+        if(data.status === 400){
+
+           // alert("fail");
+        }else{
+           // alert("success");
+        }
+        
+    }
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const movieID = urlParams.get('id');
+    getMovie(movieID);
+    
+</script>
