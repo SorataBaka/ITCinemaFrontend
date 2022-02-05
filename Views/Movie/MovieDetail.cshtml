@@ -3,16 +3,24 @@
 *@
 @{
 }
-<div class="container">
+<div class="container" id="mainContainer">
   <div class="row">
-    <div class="col">
-      <img src="https://i.ytimg.com/vi/MJuFdpVCcsY/movieposter_en.jpg" alt="movie" id="movieIMG"/>
+    <div class="col mx-auto d-block">
+        @*Foto masih dummy data (blm ada datanya di API)*@
+      <img
+        src="https://i.ytimg.com/vi/MJuFdpVCcsY/movieposter_en.jpg"
+        alt="movie"
+        id="movieIMG"
+      />
     </div>
+
     <div class="col">
-      <h2 id="movieTitle"><span id="movieSpan">Books</span></h2>
       <div class="container">
+          <div class="row">
+            <h2><span id="movieTitle"></span> <span id="movieSpan">Books</span></h2>
+            </div>
         <div class="row">
-          <p class="col">Genre : <span id="movieGenre">lorem</span></p>
+          <p class="col">Genre : <span id="movieGenre"></span></p>
         </div>
         <div class="row">
           <p class="col">Director : <span id="movieDirector"></span></p>
@@ -21,24 +29,139 @@
           <p class="col">Actor : <span id="movieActor"></span></p>
         </div>
         <div class="row">
-          <p class="col">Duration : <span id="movie"></span></p>
+          <p class="col">Duration : <span id="movieDuration"></span></p>
+        </div>
+        <div class="mt-4">
+          <p>Description :</p>
+          <p id="movieDescription">Lorem Ipsum</p>
         </div>
       </div>
-      
-      
     </div>
   </div>
+
+  <div class="container pt-5" id="theaterMain">
+    <div class="row">
+        <div class="col">
+            <p>Playing At:</p>
+        </div>
+    </div>
+    <div class="row text-center bg-secondary py-3 rounded">
+        <div class="col ">Theater</div>
+        <div class="col ">ShowTime</div>
+    </div>
+
+
+
+    
+
 </div>
 
-<script>
-    const getMovie = async(movieID)=>{
-        const response = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getmovies?movieID=${movieID}`);
-        const data = await response.json();
-        if(data.status === 400){
+</div>
 
-           // alert("fail");
+
+
+<script>
+    const getTheaterName = async (theaterID)=>{
+        const theaterNameResponse = await fetch(`https://itcinemabackend-production.up.railway.app/theater/gettheaters?theaterID=${theaterID}`);
+        const theaterNames = await theaterNameResponse.json();
+        const theaterName = theaterNames.Data;
+        return theaterName;
+    }
+    const getTheater = async(movieID)=>{
+        const theaterResponse = await fetch(`https://itcinemabackend-production.up.railway.app/theaterschedule/getschedules?movieID=${movieID}`);
+        const theaters = await theaterResponse.json();
+        const theatersData = theaters.Data;
+        return theatersData;
+    }
+
+    const getActors = async(movieID)=>{
+        const actorResponse = await fetch(`https://itcinemabackend-production.up.railway.app/actor/getactors?movieID=${movieID}`);
+            const actors = await actorResponse.json();
+            const actorsData = actors.Data.Actors;
+            return actorsData;
+    }
+    const getMovie = async(movieID)=>{
+        document.getElementById("mainContainer").style.visibility = 'hidden';
+        const response = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getmovies?movieID=${movieID}`);
+        const datas = await response.json();
+        if(datas.status === 400){
+            //FAIL
+           document.getElementById("mainContainer").innerText = 'ERROR OCCURED!';
         }else{
-           // alert("success");
+            //SUCCESS
+
+            //Butuh akses buat ambil data genre
+            //const response = await fetch(`https://itcinemabackend-production.up.railway.app/admin/getgenres?movieID=${movieID}`);
+            //const genres = await response.json();
+            //const genre = genres.Data[0];
+            const actorsData = await getActors(movieID);
+            if(actorsData.length === 0){
+                document.getElementById("movieActor").innerText = '-';
+            }else{
+                document.getElementById("movieActor").innerText = actorsData;
+            }
+            const movieData = datas.Data[0];
+           document.getElementById("movieTitle").innerText =  movieData.MovieTitle
+           //document.getElementById("movieGenre").innerText = genre.GenreName;
+           document.getElementById("movieDirector").innerText = movieData.MovieDirector
+           document.getElementById("movieDuration").innerText = movieData.MovieDuration
+           document.getElementById("movieDescription").innerText = movieData.MovieDescription
+
+           const TheaterMainContainer = document.getElementById("theaterMain");
+           const theatersData = await getTheater(movieID);
+           let theaterNames=[];
+           for(let i =0; i<theatersData.length;i++){
+               let tempData = await getTheaterName(theatersData[i].TheaterID);
+               theaterNames.push(tempData);
+           }
+           for(let i =0;i<theaterNames.length;i++){
+               const TheaterRow = document.createElement("div");
+                TheaterRow.classList.add("row");
+                TheaterRow.classList.add("py-2");
+
+
+                const ColTheaterName = document.createElement("div");
+                ColTheaterName.classList.add("col");
+                ColTheaterName.classList.add("text-center");
+                ColTheaterName.classList.add("align-middle");
+
+
+                const TheaterNameP = document.createElement("p");
+                TheaterNameP.classList.add("theaterName");
+                TheaterNameP.classList.add("align-middle");
+                TheaterNameP.classList.add("m-auto");
+                TheaterNameP.innerText = theaterNames[i][0].TheaterName;
+
+                const ColTheaterTime = document.createElement("div");
+                ColTheaterTime.classList.add("col");
+
+
+                const ContainerTheaterTime = document.createElement("div");
+                ContainerTheaterTime.classList.add("text-center");
+                ContainerTheaterTime.classList.add("d-flex");
+                ContainerTheaterTime.classList.add("flex-row");
+
+                //Tiap Showtime ada dikasih href ke theaterID masing masing
+                let TheaterTimeA = document.createElement("a");
+                TheaterTimeA.classList.add("bg-secondary");
+                TheaterTimeA.classList.add("rounded");
+                TheaterTimeA.classList.add("p-2");
+                TheaterTimeA.classList.add("m-1");
+                TheaterTimeA.classList.add("text-decoration-none");
+                TheaterTimeA.classList.add("text-reset");
+                const StartTime = new Date(theatersData[i].PlayingAt)
+                TheaterTimeA.innerText = StartTime.getHours() + '.' + StartTime.getMinutes();
+                TheaterTimeA.href = theaterNames[i][0].TheaterID;
+
+                TheaterRow.appendChild(ColTheaterName);
+                ColTheaterName.appendChild(TheaterNameP);
+                TheaterRow.appendChild(ColTheaterTime);
+                ColTheaterTime.appendChild(ContainerTheaterTime);
+                ContainerTheaterTime.appendChild(TheaterTimeA);
+                TheaterMainContainer.appendChild(TheaterRow);
+           }
+
+           document.getElementById("mainContainer").style.visibility = 'visible';
         }
         
     }
@@ -46,6 +169,11 @@
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const movieID = urlParams.get('id');
-    getMovie(movieID);
+    try{
+        getMovie(movieID);
+    }catch(e){
+        alert("An Error Occured");
+    }
+    
     
 </script>
