@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
@@ -9,13 +10,17 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
-  margin-bottom: 60px;
+  margin: 0px;
+  padding: 0px;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 .Main-Header-Body {
   background-color: #98BAE7;
@@ -26,7 +31,7 @@ body {
 }
 .Header-Logo {
   height: 80px;
-  margin: 10;
+  margin: 10px;
 }
 .Header-Image {
   display: inline;

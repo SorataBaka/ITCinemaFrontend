@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+.Main-Body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  background-color: white;
+  flex-direction: column;
+  width: 100vw;
+  /* Center contents of this div */
+}
+.Main-Carousel {
+  background-color: #289CFF;
+  width: 70vw;
+  height: 70vh;
+  margin: 50px;
+  border-radius: 20px;
+  margin-bottom: 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 30px;
+}
+.Main-Carousel:hover {
+  /* blur */
+  filter: blur(2px);
+}
+.Main-Carousel-Title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  color: #fff;
+  margin: 0;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.Main-Carousel-Description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.Main-Carousel-Author {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.0rem;
+  color: #fff;
+  margin: 0;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.Now-Playing-Box {
+  width: 70vw;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #289CFF;
+  border-radius: 20px;
+  flex-direction: column;
+  margin: 50px;
+  padding-top: 20px;
+}
+.Now-Player-Header{
+  font-size: 30px;
+  width: 80%;
+  text-align: start;
+  padding: 20px;
+}
+.Now-Playing-Text {
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.Movies-List {
+  width: 80%;
+  height: fit-content;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  white-space: nowrap;
+  overflow: auto;
+  overflow-y: hidden;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.MovieBox {
+  height: 290px;
+  width: 200px;
+  background-color: #289CFF;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 15px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.MovieBox:hover {
+  transform: scale(1.1);
+  filter: blur(1px);
+}
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: honeydew;
+  border-radius: 10px;
+}
