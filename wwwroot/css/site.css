@@ -16,3 +16,25 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.titleNowPlaying {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.titleComingSoon {
+    margin-top: 80px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+#movieListNowPlaying {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#movieListComingSoon {
+    display: flex;
+    flex-wrap: wrap;
+}
+
