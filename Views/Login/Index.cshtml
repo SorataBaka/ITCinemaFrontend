@@ -7,6 +7,8 @@
   <div class="form-group" style="margin-bottom:10px">
     <input type="password" class="form-control" id="InputPassword" placeholder="Password">
   </div>
+  <div id="error-message" role="alert">
+  </div>
   <button onclick="login()" type="submit" class="btn btn-primary">Submit</button>
 
 </div>
@@ -28,6 +30,9 @@
             if(res.ResultCode==200){
                 window.sessionStorage.setItem("token",res.Data.token)
                 window.location.replace("/")
+            }else{
+                document.getElementById("error-message").innerHTML = "Login Failed";
+                document.getElementById("error-message").className = "alert alert-danger";
             }
         }
 </script>
