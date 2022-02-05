@@ -1,0 +1,21 @@
+.Main-Body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  flex-direction: column;
+  width: 100vw;
+  height: 80vh;
+  text-align: center;
+  margin-bottom: 100px;
+}
+.text-center {
+  width: 30vw;
+  text-align: center;
+}
+.form-control {
+  margin-bottom: 30px;
+}
+.display-4 {
+  margin-bottom: 30px;
+}
