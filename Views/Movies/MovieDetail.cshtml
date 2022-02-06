@@ -69,9 +69,11 @@
         return theaterName;
     }
     const getTheater = async(movieID)=>{
-        const theaterResponse = await fetch(`https://itcinemabackend-production.up.railway.app/theaterschedule/getschedules?movieID=${movieID}`);
+        //const theaterResponse = await fetch(`https://itcinemabackend-production.up.railway.app/theaterschedule/getschedules?movieID=${movieID}`);
+        const theaterResponse = await fetch(`https://localhost:44306/movie/getmoviedetails?movieID=${movieID}&date=2022-02-10`);
         const theaters = await theaterResponse.json();
         const theatersData = theaters.Data;
+        console.log(theatersData);
         return theatersData;
     }
 
@@ -111,8 +113,8 @@
            const TheaterMainContainer = document.getElementById("theaterMain");
            const theatersData = await getTheater(movieID);
            let theaterNames=[];
-           for(let i =0; i<theatersData.length;i++){
-               let tempData = await getTheaterName(theatersData[i].TheaterID);
+           for(let i =0; i<theatersData.PlayAt.length;i++){
+               let tempData = await getTheaterName(theatersData.PlayAt[i].TheaterID);
                theaterNames.push(tempData);
            }
            for(let i =0;i<theaterNames.length;i++){
@@ -141,24 +143,32 @@
                 ContainerTheaterTime.classList.add("text-center");
                 ContainerTheaterTime.classList.add("d-flex");
                 ContainerTheaterTime.classList.add("flex-row");
-
+                const timeLength = theatersData.PlayAt[i].Time.length;
                 //Tiap Showtime ada dikasih href ke theaterID masing masing
-                let TheaterTimeA = document.createElement("a");
+                for(let j = 0; j <  timeLength ; j++){
+                    let TheaterTimeA = document.createElement("a");
                 TheaterTimeA.classList.add("bg-secondary");
                 TheaterTimeA.classList.add("rounded");
                 TheaterTimeA.classList.add("p-2");
                 TheaterTimeA.classList.add("m-1");
                 TheaterTimeA.classList.add("text-decoration-none");
                 TheaterTimeA.classList.add("text-reset");
-                const StartTime = new Date(theatersData[i].PlayingAt)
-                TheaterTimeA.innerText = StartTime.getHours() + '.' + StartTime.getMinutes();
-                TheaterTimeA.href = theaterNames[i][0].TheaterID;
+                TheaterTimeA.classList.add("theaterTimeA");
+                const theaterTime = theatersData.PlayAt[i].Time[j];
+                 const StartTime = new Date(theaterTime)
+                 const hours = ("0" + StartTime.getHours()).slice(-2)
+                const minutes = ("0" + StartTime.getMinutes()).slice(-2)
+                TheaterTimeA.innerText = hours + ':' + minutes;
+                //TheaterTimeA.href = theaterNames[i][0].TheaterID;
+                ContainerTheaterTime.appendChild(TheaterTimeA);
+                }
+               
 
                 TheaterRow.appendChild(ColTheaterName);
                 ColTheaterName.appendChild(TheaterNameP);
                 TheaterRow.appendChild(ColTheaterTime);
                 ColTheaterTime.appendChild(ContainerTheaterTime);
-                ContainerTheaterTime.appendChild(TheaterTimeA);
+                
                 TheaterMainContainer.appendChild(TheaterRow);
            }
 
