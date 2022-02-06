@@ -1,7 +1,8 @@
-﻿<script src="/js/register.js"></script>
+﻿@{
+ViewData["Title"] = "Register";
+}
+<script src="/js/register.js"></script>
 <link rel="stylesheet" href="/css/login.css">
-
-
 <div class="Main-Body">
   <div class="text-center">
     <h5 class="display-4">Register</h5>
@@ -27,7 +28,7 @@
     </div>
     <button onclick="register()" type="submit" class="btn btn-primary">Register</button>
     <div class="form-group" style="margin-bottom:10px; margin-top:15px;">
-      Already have an account? <Button style="width:150px" class="btn btn-primary" onclick="login()" >Login here !</Button>
+      Already have an account? <a style="width:150px" class="no-account" href="/login" >Login here !</a>
     </div>
   </div>
 </div>
