@@ -3,12 +3,13 @@
 *@
 @{
 }
-<div class="container" id="mainContainer">
+<link rel="stylesheet" href="./css/movieDetail.css">
+<div class="container my-5" id="mainContainer">
   <div class="row">
-    <div class="col mx-auto d-block">
+    <div class="col mx-auto d-block" style="max-width:50%">
         @*Foto masih dummy data (blm ada datanya di API)*@
       <img
-        src="https://i.ytimg.com/vi/MJuFdpVCcsY/movieposter_en.jpg"
+      style="max-width:100%"
         alt="movie"
         id="movieIMG"
       />
@@ -17,7 +18,7 @@
     <div class="col">
       <div class="container">
           <div class="row">
-            <h2><span id="movieTitle"></span> <span id="movieSpan">Books</span></h2>
+            <h2><span id="movieTitle"></span></h2>
             </div>
         <div class="row">
           <p class="col">Genre : <span id="movieGenre"></span></p>
@@ -91,9 +92,9 @@
             //SUCCESS
 
             //Butuh akses buat ambil data genre
-            //const response = await fetch(`https://itcinemabackend-production.up.railway.app/admin/getgenres?movieID=${movieID}`);
+            //const response = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getgenres?movieID=${movieID}`);
             //const genres = await response.json();
-            //const genre = genres.Data[0];
+            //const genre = genres.Data[0].GenreName;
             const actorsData = await getActors(movieID);
             if(actorsData.length === 0){
                 document.getElementById("movieActor").innerText = '-';
@@ -104,9 +105,9 @@
            document.getElementById("movieTitle").innerText =  movieData.MovieTitle
            //document.getElementById("movieGenre").innerText = genre.GenreName;
            document.getElementById("movieDirector").innerText = movieData.MovieDirector
-           document.getElementById("movieDuration").innerText = movieData.MovieDuration
+           document.getElementById("movieDuration").innerText = `${movieData.MovieDuration} Minutes`
            document.getElementById("movieDescription").innerText = movieData.MovieDescription
-
+           document.getElementById("movieIMG").src = movieData.PosterURL
            const TheaterMainContainer = document.getElementById("theaterMain");
            const theatersData = await getTheater(movieID);
            let theaterNames=[];

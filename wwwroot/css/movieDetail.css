@@ -1,0 +1,8 @@
+﻿#theaterMain {
+    max-height: 500px;
+    overflow-y: auto;
+    margin-bottom: 200px;
+}
+#mainContainer p {
+    color: black !important
+}
