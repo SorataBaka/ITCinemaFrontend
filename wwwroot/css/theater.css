@@ -1,4 +1,8 @@
-﻿.titleNowPlaying {
+﻿a {
+    text-decoration: none;
+}
+
+.titleNowPlaying {
     margin-top: 40px;
     margin-left: 15px;
     margin-bottom: 10px;
