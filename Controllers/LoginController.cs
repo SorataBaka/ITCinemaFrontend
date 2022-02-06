@@ -23,6 +23,11 @@ namespace ITCinemaFrontend.Controllers
             return View();
         }
 
+        public IActionResult GoToRegister()
+        {
+            return View("~/Views/Register");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

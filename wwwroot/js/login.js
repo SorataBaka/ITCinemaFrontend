@@ -22,3 +22,7 @@ const login = async () => {
       document.getElementById("error-message").className = "alert alert-danger";
   }
 }
+
+const register = () => {
+    window.location.replace("/register");
+}
