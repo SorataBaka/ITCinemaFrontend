@@ -48,11 +48,11 @@ body {
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 .Main-Header-Body {
-  background-color: #98BAE7;
-  width: 100vw;
-  height: 100px;
-  display: flex;
-  align-items: center;
+    background-color: #98BAE7;
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    align-items: center;
 }
 .Header-Logo {
   height: 80px;
