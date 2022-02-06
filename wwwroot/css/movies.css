@@ -1,15 +1,14 @@
 ﻿a {
-    text-decoration: none;
+    color: inherit;
 }
 
 .titleNowPlaying {
-    margin-top: 40px;
+    margin-top: 30px;
     margin-left: 15px;
-    margin-bottom: 10px;
 }
 
 .titleComingSoon {
-    margin-top: 80px;
+    margin-top: 70px;
     margin-left: 15px;
     margin-bottom: 10px;
 }
@@ -22,11 +21,7 @@
 #movieListComingSoon {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 100px;
+    margin-bottom: 200px;
 }
 
-.titleTheaterList {
-    margin-top: 40px;
-    margin-left: 35px;
-    margin-bottom: 15px;
-}
+

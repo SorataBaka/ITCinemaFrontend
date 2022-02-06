@@ -2,7 +2,7 @@
 
 namespace ITCinemaFrontend.Controllers
 {
-    public class TheaterController : Controller
+    public class MoviesController : Controller
     {
         public IActionResult Index()
         {
@@ -13,7 +13,7 @@ namespace ITCinemaFrontend.Controllers
                 {
                     return View();
                 }
-                return View("TheaterDetail");
+                return View("MovieDetail");
             }
             else
             {
