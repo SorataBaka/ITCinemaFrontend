@@ -14,8 +14,15 @@ const login = async () => {
     }
   });
   const res = await response.json();
-  if (res.ResultCode == 200) {
-    console.log(JSON.stringify(res));
-    window.sessionStorage.setItem("token", res.Data.Token)
+    if (res.ResultCode == 200) {
+        window.sessionStorage.setItem("token", res.Data.Token)
+        window.location.replace("/")
+  } else {
+      document.getElementById("error-message").innerHTML = "Login Failed";
+      document.getElementById("error-message").className = "alert alert-danger";
   }
+}
+
+const register = () => {
+    window.location.replace("/register");
 }
