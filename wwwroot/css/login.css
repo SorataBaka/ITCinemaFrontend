@@ -19,3 +19,12 @@
 .display-4 {
   margin-bottom: 30px;
 }
+.no-account {
+  color: blue;
+  text-decoration: underline;
+  font-size: 15px;
+}
+.no-account:hover {
+  color: #0056b3;
+  cursor: pointer;
+}

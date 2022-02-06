@@ -137,3 +137,14 @@ p, a{
   font-size: 15px;
   margin: 10px;
 }
+.nav-button {
+  /* align center */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.8rem;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  flex-direction: column;
+}
