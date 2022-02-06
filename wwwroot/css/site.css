@@ -16,9 +16,9 @@ html {
 body {
   margin-bottom: 60px;
 }
-<<<<<<< HEAD
 
 .titleNowPlaying {
+    margin-top: 40px;
     margin-left: 15px;
     margin-bottom: 10px;
 }
@@ -37,9 +37,15 @@ body {
 #movieListComingSoon {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 100px;
 }
 
-=======
+.titleTheaterList {
+    margin-top: 40px;
+    margin-left: 35px;
+    margin-bottom: 15px;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 .Main-Header-Body {
   background-color: #98BAE7;
@@ -50,7 +56,7 @@ body {
 }
 .Header-Logo {
   height: 80px;
-  margin: 10;
+  margin: 10px;
 }
 .Header-Image {
   display: inline;
@@ -155,4 +161,3 @@ p, a{
   font-size: 15px;
   margin: 10px;
 }
->>>>>>> 4ecd1119f8d2715d06cf964e39f7d4e249b2adfa
