@@ -10,6 +10,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/site.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="./scripts/index.js"></script>
 </head>
 
 <body>
@@ -39,9 +41,23 @@
       <Button class="btn btn-primary" style="border-radius: 10px">Login</Button>
     </div>
   </div>
-  <div class="Main-Body">
 
+  <div class="Main-Body">
+    <a class="Main-Carousel" id="Main-Carousel">
+      <div class="Description-Divider">
+        <h1 class="Main-Carousel-Title"></h1>
+        <h3 class="Main-Carousel-Description"></h3>
+        <h5 class="Main-Carousel-Author"></h5>
+      </div>
+    </a>
+    <div class="Now-Playing-Box">
+      <div class="Now-Player-Header">
+        <h3 class="Now-Playing-Text">Now Playing</h3>
+      </div>
+      <div class="Movies-List" id="Movie-List"></div>
+    </div>
   </div>
+
   <div class="Main-Footer">
     <div class="Footer-Content-Div">
       <div class="Copyright-Footer">

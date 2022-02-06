@@ -1,37 +1,109 @@
 ﻿@{
 }
 
-
+ <link rel="stylesheet" href="./css/theater.css">
 
 <div class="container">
     <h3 class="titleTheaterList">Theater List</h3>
-    <ul id="theaterList">
-    </ul>
-</div>
+    <button class="btn btn-primary" style="margin-left: 30px; margin-bottom: 30px" onclick="filterRegular()">Regular</button>
+    <button class="btn btn-primary" style="margin-bottom: 30px"onclick="filterGold()">Gold</button>
+    <button class="btn btn-primary" style="margin-bottom: 30px"onclick="filterPlatinum()">Platinum</button>
+    <button class="btn btn-primary" style="margin-bottom: 30px"onclick="filterDiamond()">Diamond</button>
 
+    <ul id="theaterList"></ul>
+</div>
 
 
 <script>
 
     const getTheater= async(theaterID)=>{
-        const response = await fetch(`https://itcinemabackend-production.up.railway.app/theater/gettheaters`);
+        const response = await fetch(`https://itcinemabackend-production.up.railway.app/theater/gettheaters?limit=-1&theaterType=1`);
         const datas = await response.json();
         if(datas.status === 400){
            // alert("fail");
         }else{
+
+                // default
+                for (var x = 0; x < datas.Data.length; x++){
+                    const theaterData = datas.Data[x];
+                    document.getElementById("theaterList").innerHTML +=
+                    `<ul class="list-group">
+                        <li class="list-group-item"> <span id="">${theaterData.TheaterName}</span></li>
+                    </ul>
+                    `;
+                }
+
             
-            for (var x = 0; x < datas.Data.length; x++){
-                const theaterData = datas.Data[x];
-                document.getElementById("theaterList").innerHTML +=
-                `<ul class="list-group">
-                    <li class="list-group-item"> <span id="">${theaterData.TheaterName}</span></li>
-                 </ul>
-                `;
-            }
-            
+
         }
         
     }
+
+    async function getTheaterData(){
+        const response = await fetch(`https://itcinemabackend-production.up.railway.app/theater/gettheaters?limit=-1&theaterType=1`);
+        const datas = await response.json();
+        return datas;
+    }
+
+
+
+    // Regular button onClick
+    async function filterRegular(){
+        document.getElementById("theaterList").innerHTML = "";
+        const datas = await getTheaterData();
+        for (var x = 0; x < datas.Data.length; x++){
+            const theaterData2 = datas.Data[x];
+            document.getElementById("theaterList").innerHTML +=
+                `<ul class="list-group">
+                    <li class="list-group-item"> <span id="">${theaterData2.TheaterName}</span></li>
+                </ul>
+                `;
+        }
+    }
+
+    // Gold button onClick
+    async function filterGold(){
+        document.getElementById("theaterList").innerHTML = "";
+        const datas = await getTheaterData();
+        for (var x = 0; x < datas.Data.length; x++){
+            const theaterData3 = datas.Data[x];
+            document.getElementById("theaterList").innerHTML +=
+                `<ul class="list-group">
+                    <li class="list-group-item"> <span id="">${theaterData3.TheaterName}</span></li>
+                </ul>
+                `;
+        }
+     }
+
+    // Platinum button onClick
+    async function filterPlatinum(){
+        document.getElementById("theaterList").innerHTML = "";
+        const datas = await getTheaterData();
+        for (var x = 0; x < datas.Data.length; x++){
+            const theaterData2 = datas.Data[x];
+            document.getElementById("theaterList").innerHTML +=
+                `<ul class="list-group">
+                    <li class="list-group-item"> <span id="">${theaterData2.TheaterName}</span></li>
+                </ul>
+                `;
+        }
+    }
+
+    // Diamond button onClick
+    async function filterDiamond(){
+        document.getElementById("theaterList").innerHTML = "";
+        const datas = await getTheaterData();
+        for (var x = 0; x < datas.Data.length; x++){
+            const theaterData2 = datas.Data[x];
+            document.getElementById("theaterList").innerHTML +=
+                `<ul class="list-group">
+                    <li class="list-group-item"> <span id="">${theaterData2.TheaterName}</span></li>
+                </ul>
+                `;
+        }
+    }
+
+
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);

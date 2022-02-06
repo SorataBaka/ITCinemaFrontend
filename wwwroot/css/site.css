@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
@@ -9,46 +10,20 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
-  margin-bottom: 60px;
-}
-
-.titleNowPlaying {
-    margin-top: 40px;
-    margin-left: 15px;
-    margin-bottom: 10px;
-}
-
-.titleComingSoon {
-    margin-top: 80px;
-    margin-left: 15px;
-    margin-bottom: 10px;
-}
-
-#movieListNowPlaying {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#movieListComingSoon {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 100px;
-}
-
-.titleTheaterList {
-    margin-top: 40px;
-    margin-left: 35px;
-    margin-bottom: 15px;
+  margin: 0px;
+  padding: 0px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 .Main-Header-Body {
-  background-color: #98BAE7;
+  background-color: #289CFF;
   width: 100vw;
   height: 100px;
   display: flex;
@@ -89,6 +64,7 @@ body {
 }
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 p, a{
   font-family: 'Poppins', sans-serif;
@@ -103,7 +79,7 @@ p, a{
 .Main-Footer {
   height: 100px;
   width: 100vw;
-  background-color: #98BAE7;
+  background-color: #289CFF;
   position: absolute;
   bottom: 0;
   /* Center contents of this div */
