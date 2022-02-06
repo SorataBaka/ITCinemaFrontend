@@ -3,12 +3,12 @@
 *@
 @{
 }
-<div class="container" id="mainContainer">
+<div class="container my-5" id="mainContainer">
   <div class="row">
-    <div class="col mx-auto d-block">
+    <div class="col mx-auto d-block" style="max-width:50%">
         @*Foto masih dummy data (blm ada datanya di API)*@
       <img
-        src="https://i.ytimg.com/vi/MJuFdpVCcsY/movieposter_en.jpg"
+      style="max-width:100%"
         alt="movie"
         id="movieIMG"
       />
@@ -20,7 +20,7 @@
             <h2><span id="movieTitle"></span> <span id="movieSpan">Books</span></h2>
             </div>
         <div class="row">
-          <p class="col">Genre : <span id="movieGenre"></span></p>
+          <p class="col text-dark">Genre : <span id="movieGenre"></span></p>
         </div>
         <div class="row">
           <p class="col">Director : <span id="movieDirector"></span></p>
@@ -106,7 +106,7 @@
            document.getElementById("movieDirector").innerText = movieData.MovieDirector
            document.getElementById("movieDuration").innerText = movieData.MovieDuration
            document.getElementById("movieDescription").innerText = movieData.MovieDescription
-
+           document.getElementById("movieIMG").src = movieData.PosterURL
            const TheaterMainContainer = document.getElementById("theaterMain");
            const theatersData = await getTheater(movieID);
            let theaterNames=[];
