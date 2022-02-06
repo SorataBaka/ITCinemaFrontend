@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 .Main-Header-Body {
-  background-color: #98BAE7;
+  background-color: #289CFF;
   width: 100vw;
   height: 100px;
   display: flex;
@@ -8,7 +8,7 @@
 }
 .Header-Logo {
   height: 80px;
-  margin: 10;
+  margin: 10px;
 }
 .Header-Image {
   display: inline;
@@ -41,6 +41,7 @@
 }
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 p, a{
   font-family: 'Poppins', sans-serif;
@@ -55,13 +56,12 @@ p, a{
 .Main-Footer {
   height: 100px;
   width: 100vw;
-  background-color: #98BAE7;
-  position: absolute;
-  bottom: 0;
+  background-color: #289CFF;
   /* Center contents of this div */
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
 }
 .Footer-Content-Div {
   height: inherit;
