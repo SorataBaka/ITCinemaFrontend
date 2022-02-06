@@ -1,0 +1,41 @@
+﻿@{
+}
+
+
+
+<div class="container">
+    <h3 class="titleTheaterList">Theater List</h3>
+    <ul id="theaterList">
+    </ul>
+</div>
+
+
+
+<script>
+
+    const getTheater= async(theaterID)=>{
+        const response = await fetch(`https://itcinemabackend-production.up.railway.app/theater/gettheaters`);
+        const datas = await response.json();
+        if(datas.status === 400){
+           // alert("fail");
+        }else{
+            
+            for (var x = 0; x < datas.Data.length; x++){
+                const theaterData = datas.Data[x];
+                document.getElementById("theaterList").innerHTML +=
+                `<ul class="list-group">
+                    <li class="list-group-item"> <span id="">${theaterData.TheaterName}</span></li>
+                 </ul>
+                `;
+            }
+            
+        }
+        
+    }
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const theaterID = urlParams.get('id');
+    getTheater(theaterID);
+    
+</script>
