@@ -1,3 +1,31 @@
 @{
 ViewData["Title"] = "Booking";
 }
+
+<link rel="stylesheet" href="./css/booking.css">
+<script src="./js/booking.js"></script>
+<div class="Main-Body">
+  <div class="Seat-Selection-List">
+    <div class="Movie-Screen">
+      <h3 class="Movie-Screen-Text">Movie Screen</h3>
+    </div>
+  </div>
+
+  <div class="Booking-Box">
+    <div class="Amount">
+      <h3>Amount</h3>
+      <p class="Total-Price">IDR 0</p>
+    </div>
+    <!-- Create a white vertical line-->
+    <div class="Vertical-Line"></div>
+    <div class="Button-Divisor">
+      <button class="btn btn-primary" id="reset-seat">
+        <span>Reset Seats</span>
+      </button>
+      <button class="btn btn-primary" onclick="bookSeats()">
+        <span>Book Seats</span>
+      </button>
+    </div>
+
+  </div>
+</div>
