@@ -24,7 +24,7 @@
             for (var x = 0; x < datas.Data.length; x++){
                 const movieData = datas.Data[x];
                 document.getElementById("movieListNowPlaying").innerHTML +=
-                ` <a href="/movie?id=${movieData.MovieID}" class="card text-center" style="width: 17rem; margin: 15px">
+                ` <a href="/movies?id=${movieData.MovieID}" class="card text-center" style="width: 17rem; margin: 15px">
                     <img class="card-img-top" style="height: 20rem;" src="${movieData.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
                     <div class="card-body">
                     <h5 <span style="margin: auto; id="">${movieData.MovieTitle}</span></h5>
@@ -44,7 +44,7 @@
             for (var x = 0; x < datas2.Data.length; x++){
                 const movieData2 = datas2.Data[x];
                 document.getElementById("movieListComingSoon").innerHTML +=
-                ` <a href="/movie?id=${movieData.MovieID}" class="card text-center" style="width: 17rem; margin: 15px">
+                ` <a href="/movies?id=${movieData.MovieID}" class="card text-center" style="width: 17rem; margin: 15px">
                     <img class="card-img-top" style="height: 20rem;" src="${movieData2.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
                     <div class="card-body">
                     <h5 <span id="">${movieData2.MovieTitle}</span></h5>
