@@ -35,10 +35,16 @@ h5 {
     cursor: pointer;
 }
 
+.input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid var(--bs-dark);  
+}
+
 .input-box > input {
+    margin-bottom: 0;
     border: 0;
-    border-bottom: 2px solid var(--bs-dark);
-    border-radius: 0;
 }
 
 #message-alert {
