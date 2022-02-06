@@ -2,8 +2,8 @@
 ViewData["Title"] = "Booking";
 }
 
-<link rel="stylesheet" href="./css/booking.css">
-<script src="./js/booking.js"></script>
+<link rel="stylesheet" href="~/css/booking.css">
+<script src="~/js/booking.js"></script>
 <div class="Main-Body">
   <div class="Seat-Selection-List">
     <div class="Movie-Screen">
@@ -19,7 +19,7 @@ ViewData["Title"] = "Booking";
     <!-- Create a white vertical line-->
     <div class="Vertical-Line"></div>
     <div class="Button-Divisor">
-      <button class="btn btn-primary" id="reset-seat">
+      <button class="btn btn-primary" id="reset-seat" onclick="window.location.reload()">
         <span>Reset Seats</span>
       </button>
       <button class="btn btn-primary" onclick="bookSeats()">

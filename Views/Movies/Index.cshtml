@@ -26,7 +26,7 @@
                 const movieData = datas.Data[x];
                 document.getElementById("movieListNowPlaying").innerHTML +=
                 ` <div class="card text-center" style="width: 17rem; margin: 15px">
-                    <a href="/movies?id=${movieData.MovieID}">
+                    <a href="/movies/moviedetails?id=${movieData.MovieID}">
                         <img class="card-img-top" style="height: 20rem;" src="${movieData.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
                         <div class="card-body">
                             <h5 <span style="margin: auto; id="">${movieData.MovieTitle}</span></h5>
@@ -38,7 +38,7 @@
             
         }
 
-        const response2 = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getmovies?moviestatus=3&limit=-1`);
+        const response2 = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getmovie?moviestatus=3&limit=-1`);
         const datas2 = await response2.json();
         if(datas2.status === 400){
            // alert("fail");
@@ -48,7 +48,7 @@
                 const movieData2 = datas2.Data[x];
                 document.getElementById("movieListComingSoon").innerHTML +=
                 ` <div class="card text-center" style="width: 17rem; margin: 15px">
-                    <a href="/movies?id=${movieData2.MovieID}">
+                    <a href="/movies/moviedetails?id=${movieData2.MovieID}">
                         <img class="card-img-top" style="height: 20rem;" src="${movieData2.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
                         <div class="card-body">
                             <h5 <span id="">${movieData2.MovieTitle}</span></h5>
