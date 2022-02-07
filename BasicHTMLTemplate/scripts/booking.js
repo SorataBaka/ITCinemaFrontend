@@ -15,9 +15,9 @@ const countTotal = (seatPrice) => {
 }
 const loadSeats = async() => {
   const windowurl = window.location.href
-  const scheduleid = windowurl.split("?scheduleid=")[1] || "b00b95b2-748b-419e-92ce-019f24228dd7"
+  const scheduleid = windowurl.split("?scheduleid=")[1]
   globalScheduleID = scheduleid 
-  // if(scheduleid === undefined) return window.location.replace("/")
+  if(scheduleid === undefined) return window.location.replace("/")
   const seatQuery = await fetch(`https://itcinemabackend-production.up.railway.app/theaterschedule/getbookedseats?scheduleID=${scheduleid}`, {
     method: "GET"
   }).catch(err => {
@@ -87,10 +87,9 @@ const loadSeats = async() => {
 }
 window.onload = loadSeats
 
-
 const bookSeats = async() => {
-  // const token = window.sessionStorage.getItem("token")
-  // if(!token) return window.location.replace("/")
+  const token = window.sessionStorage.getItem("token")
+  if(!token) return window.location.replace("/")
   var seatArray = []
   console.log(totalSeats)
   for(var i = 1; i <= totalSeats; i++){
@@ -106,7 +105,7 @@ const bookSeats = async() => {
   const buySeats = await fetch(`https://itcinemabackend-production.up.railway.app/user/buytickets`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiYmIxZDk4ZWYtNTI2ZC00NGJiLTlmNWItNDQxODVkMjhkZDI1Iiwicm9sZSI6IjEiLCJuYmYiOjE2NDQxNzA3MjYsImV4cCI6MTY0NDIxMzkyNiwiaWF0IjoxNjQ0MTcwNzI2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYxOTU1IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0MjAwIn0.ethz-kNI87TMz7SZlXTeS4KerjSbxq4v5eTWuF2zZkY`,
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"
     },
     body: requestBody
