@@ -1,0 +1,35 @@
+﻿.Main-Body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 100vw;
+    height: 80vh;
+    text-align: center;
+    margin-bottom: 100px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.profilePicture{
+    width: 350px;
+    border-radius: 100px;
+}
+
+.informationProfile {
+    flex-direction: column;
+    display: flex;
+    text-align: left;
+    justify-content: left;
+}
+
+#profileUserName{
+    margin-bottom: 15px;
+}
+
+#profileEmail {
+    margin-bottom: 15px;
+}
+
+.button {
+    width: unset;
+}
