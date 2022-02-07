@@ -1,0 +1,46 @@
+﻿.Main-Body {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    flex-direction: column;
+    width: 100vw;
+    height: 80vh;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.text-center {
+    width: 30vw;
+    text-align: center;
+}
+
+.form-control {
+    margin-bottom: 30px;
+}
+
+h5 {
+    margin-bottom: 30px;
+}
+
+.no-account {
+    color: blue;
+    text-decoration: underline;
+    font-size: 15px;
+}
+
+.no-account:hover {
+    color: #0056b3;
+    cursor: pointer;
+}
+
+.input-box > input {
+    border: 0;
+    border-bottom: 2px solid var(--bs-dark);
+    border-radius: 0;
+}
+
+#message-alert {
+    margin-top: 20px;
+}
