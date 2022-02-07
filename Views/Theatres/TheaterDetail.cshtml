@@ -23,6 +23,13 @@
         <div class="col ">Movie</div>
         <div class="col ">Showtime</div>
     </div>
+    <div class="row">
+        <div class="col-sm"></div>
+        <div style="display:inline-flex; justify-content: space-around" class="col-sm">
+            <div onclick="getTheaterDetailToday()" style="cursor: pointer;" id="today-date">today</div>
+            <div onclick="getTheaterDetailTomorrow()" style="cursor: pointer;" id="tomorrow-date">tomorrow</div>
+        </div>
+    </div>
 
 </div>
 
@@ -31,6 +38,13 @@
 
 
 <script>
+
+    var today = new Date();
+    var todayDate = today.getFullYear()+'-'+(("0"+(today.getMonth()+1)).slice(-2))+'-'+(("0"+today.getDate()).slice(-2))
+    var tomorrowDate = today.getFullYear()+'-'+(("0"+(today.getMonth()+1)).slice(-2))+'-'+(("0"+(today.getDate()+1)).slice(-2))
+    document.getElementById("today-date").innerHTML = `${todayDate}`;   
+    document.getElementById("tomorrow-date").innerHTML = `${tomorrowDate}`; 
+
     const getTheater = async (theaterID)=>{
         //Kalau data udh siap, ubah ke &date=Date.now()
         const response = await fetch(`https://itcinemabackend-production.up.railway.app/theater/gettheaters?theaterID=${theaterID}`);
@@ -40,7 +54,7 @@
     }
 
    const getTheaterDetails = async (theaterID)=>{
-       const response = await fetch(`https://localhost:44306/theater/getheaterdetails?theaterID=${theaterID}&date=2022-02-10`);
+       const response = await fetch(`https://itcinemabackend-production.up.railway.app/theater/getheaterdetails?theaterID=${theaterID}&date=2022-02-10`);
        const theaterDetailData = await response.json();
        const datas = theaterDetailData.Data;
        return datas;

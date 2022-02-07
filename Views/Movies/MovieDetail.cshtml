@@ -50,31 +50,39 @@
         <div class="col ">Theater</div>
         <div class="col ">ShowTime</div>
     </div>
+    <div class="row">
+        <div class="col-sm"></div>
+        <div style="display:inline-flex; justify-content: space-around" class="col-sm">
+            <div onclick="getTheaterDetailToday()" style="cursor: pointer;" id="today-date">today</div>
+            <div onclick="getTheaterDetailTomorrow()" style="cursor: pointer;" id="tomorrow-date">tomorrow</div>
+        </div>
+    </div>
 
+</div>
 
+</div>
+    
+
+    
+<script>
 
     
 
-</div>
-
-</div>
-
-
-
-<script>
+    var today = new Date();
+    var todayDate = today.getFullYear()+'-'+(("0"+(today.getMonth()+1)).slice(-2))+'-'+(("0"+today.getDate()).slice(-2))
+    var tomorrowDate = today.getFullYear()+'-'+(("0"+(today.getMonth()+1)).slice(-2))+'-'+(("0"+(today.getDate()+1)).slice(-2))
+    document.getElementById("today-date").innerHTML = `${todayDate}`;   
+    document.getElementById("tomorrow-date").innerHTML = `${tomorrowDate}`;   
     const getTheaterName = async (theaterID)=>{
         const theaterNameResponse = await fetch(`https://itcinemabackend-production.up.railway.app/theater/gettheaters?theaterID=${theaterID}`);
         const theaterNames = await theaterNameResponse.json();
         const theaterName = theaterNames.Data;
         return theaterName;
     }
-    const getTheater = async(movieID)=>{
-        const theaterResponse = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getmoviedetails?movieID=${movieID}&date=2022-02-10`);
-        //MASIH TESTING DAN BLM DIUBAH KE DATE.NOW()
-        //const theaterResponse = await fetch(`https://localhost:44306/movie/getmoviedetails?movieID=${movieID}&date=2022-02-10`);
+    const getTheater = async(movieID, date)=>{
+        const theaterResponse = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getmoviedetails?movieID=${movieID}&date=${date}`);
         const theaters = await theaterResponse.json();
         const theatersData = theaters.Data;
-        console.log(theatersData);
         return theatersData;
     }
 
@@ -84,36 +92,9 @@
             const actorsData = actors.Data.Actors;
             return actorsData;
     }
-    const getMovie = async(movieID)=>{
-        document.getElementById("mainContainer").style.visibility = 'hidden';
-        const response = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getmovies?movieID=${movieID}`);
-        const datas = await response.json();
-        if(datas.status === 400){
-            //FAIL
-           document.getElementById("mainContainer").innerText = 'ERROR OCCURED!';
-        }else{
-            //SUCCESS
 
-            //Butuh akses buat ambil data genre
-            //const response = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getgenres?movieID=${movieID}`);
-            //const genres = await response.json();
-            //const genre = genres.Data[0].GenreName;
-            const actorsData = await getActors(movieID);
-            if(actorsData.length === 0){
-                document.getElementById("movieActor").innerText = '-';
-            }else{
-                document.getElementById("movieActor").innerText = actorsData;
-            }
-            const movieData = datas.Data[0];
-           document.getElementById("movieTitle").innerText =  movieData.MovieTitle
-           //document.getElementById("movieGenre").innerText = genre.GenreName;
-           document.getElementById("movieDirector").innerText = movieData.MovieDirector
-           document.getElementById("movieDuration").innerText = `${movieData.MovieDuration} Minutes`
-           document.getElementById("movieDescription").innerText = movieData.MovieDescription
-           document.getElementById("movieIMG").src = movieData.PosterURL
-           const TheaterMainContainer = document.getElementById("theaterMain");
-           const theatersData = await getTheater(movieID);
-           let theaterNames=[];
+    const getTheaterDetailList = async(theatersData) =>{
+        let theaterNames=[];
            for(let i =0; i<theatersData.PlayAt.length;i++){
                let tempData = await getTheaterName(theatersData.PlayAt[i].TheaterID);
                theaterNames.push(tempData);
@@ -164,14 +145,54 @@
                 ContainerTheaterTime.appendChild(TheaterTimeA);
                 }
                
+                const TheaterMainContainer = document.getElementById("theaterMain");
 
                 TheaterRow.appendChild(ColTheaterName);
                 ColTheaterName.appendChild(TheaterNameP);
                 TheaterRow.appendChild(ColTheaterTime);
                 ColTheaterTime.appendChild(ContainerTheaterTime);
-                
                 TheaterMainContainer.appendChild(TheaterRow);
            }
+    }
+
+
+
+    const getMovie = async(movieID, date)=>{
+        document.getElementById("mainContainer").style.visibility = 'hidden';
+        const response = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getmovies?movieID=${movieID}`);
+        const datas = await response.json();
+        if(datas.status === 400){
+            //FAIL
+           document.getElementById("mainContainer").innerText = 'ERROR OCCURED!';
+        }else{
+            //SUCCESS
+
+            //Butuh akses buat ambil data genre
+            const response = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getgenres?movieID=${movieID}`);
+            const genres = await response.json();
+            const genre = genres.Data;
+            const actorsData = await getActors(movieID);
+            if(actorsData.length === 0){
+                document.getElementById("movieActor").innerText = '-';
+            }else{
+                document.getElementById("movieActor").innerText = actorsData;
+            }
+            const movieData = datas.Data[0];
+           document.getElementById("movieTitle").innerText =  movieData.MovieTitle;
+           for(let i=0;i<genre.length;i++){
+               if(i==0){
+                document.getElementById("movieGenre").innerHTML = genre[i].GenreName;
+               }
+               else{
+                   document.getElementById("movieGenre").innerHTML += `, ${genre[i].GenreName}`;
+               }
+           }
+           document.getElementById("movieDirector").innerText = movieData.MovieDirector
+           document.getElementById("movieDuration").innerText = `${movieData.MovieDuration} Minutes`
+           document.getElementById("movieDescription").innerText = movieData.MovieDescription
+           document.getElementById("movieIMG").src = movieData.PosterURL
+           const theatersData = await getTheater(movieID, todayDate);
+           getTheaterDetailList(theatersData);
 
            document.getElementById("mainContainer").style.visibility = 'visible';
         }
@@ -181,11 +202,21 @@
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const movieID = urlParams.get('id');
+    const getTheaterDetailToday = () =>{
+        let date = document.getElementById("today-date").innerHTML;
+        getMovie(movieID,date);
+    }
+    const getTheaterDetailTomorrow = () =>{
+        let date = document.getElementById("tomorrow-date").innerHTML
+        getMovie(movieID,date);
+    }
     try{
         getMovie(movieID);
     }catch(e){
         alert("An Error Occured");
     }
+
+
     
     
 </script>
