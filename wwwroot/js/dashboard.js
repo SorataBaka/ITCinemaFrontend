@@ -49,6 +49,9 @@ const getUsername = async () => {
                 `;
 
     }
+    
 
 }
 
+
+getUsername();
