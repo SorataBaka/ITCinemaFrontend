@@ -3,7 +3,7 @@
 *@
 @{
 }
-<link rel="stylesheet" href="./css/movieDetail.css">
+<link rel="stylesheet" href="/css/movieDetail.css">
 <div class="container my-5" id="mainContainer">
   <div class="row">
     <div class="col mx-auto d-block" style="max-width:50%">
@@ -69,9 +69,9 @@
         return theaterName;
     }
     const getTheater = async(movieID)=>{
-        //const theaterResponse = await fetch(`https://itcinemabackend-production.up.railway.app/theaterschedule/getschedules?movieID=${movieID}`);
+        const theaterResponse = await fetch(`https://itcinemabackend-production.up.railway.app/movie/getmoviedetails?movieID=${movieID}&date=2022-02-10`);
         //MASIH TESTING DAN BLM DIUBAH KE DATE.NOW()
-        const theaterResponse = await fetch(`https://localhost:44306/movie/getmoviedetails?movieID=${movieID}&date=2022-02-10`);
+        //const theaterResponse = await fetch(`https://localhost:44306/movie/getmoviedetails?movieID=${movieID}&date=2022-02-10`);
         const theaters = await theaterResponse.json();
         const theatersData = theaters.Data;
         console.log(theatersData);

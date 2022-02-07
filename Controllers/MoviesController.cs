@@ -6,19 +6,10 @@ namespace ITCinemaFrontend.Controllers
     {
         public IActionResult Index()
         {
-            if (Request.QueryString.HasValue)
-            {
-                var query = System.Web.HttpUtility.ParseQueryString(Request.QueryString.Value);
-                if(query.Get("id") == null)
-                {
-                    return View();
-                }
-                return View("MovieDetail");
-            }
-            else
-            {
-                return View();
-            }
+            return View();
+        }
+        public IActionResult MovieDetails(string id) {
+            return View("MovieDetail");
         }
     }
 }

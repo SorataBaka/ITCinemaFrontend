@@ -15,9 +15,9 @@ const countTotal = (seatPrice) => {
 }
 const loadSeats = async() => {
   const windowurl = window.location.href
-  const scheduleid = windowurl.split("?scheduleid=")[1]
+    const scheduleid = windowurl.split("?scheduleid=")[1]
+    if(scheduleid === undefined) return window.location.replace("/")
   globalScheduleID = scheduleid 
-  if(scheduleid === undefined) return window.location.replace("/")
   const seatQuery = await fetch(`https://itcinemabackend-production.up.railway.app/theaterschedule/getbookedseats?scheduleID=${scheduleid}`, {
     method: "GET"
   }).catch(err => {
@@ -87,9 +87,11 @@ const loadSeats = async() => {
 }
 window.onload = loadSeats
 
+
 const bookSeats = async() => {
-  const token = window.sessionStorage.getItem("token")
-  if(!token) return window.location.replace("/")
+   const token = window.sessionStorage.getItem("token")
+    if (!token) return window.location.replace("/")
+    if (globalScheduleID === undefined) return window.location.replace("/")
   var seatArray = []
   console.log(totalSeats)
   for(var i = 1; i <= totalSeats; i++){
