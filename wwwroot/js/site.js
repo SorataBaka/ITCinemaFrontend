@@ -12,7 +12,6 @@ const verifyToken = async() => {
     }
   }).catch(err => {return err})
   const responseJson = await response.json();
-  console.log(JSON.stringify(responseJson));
   if(responseJson.Data.length === 0) return
   const user = responseJson.Data[0]
   window.sessionStorage.setItem("user", JSON.stringify(user))
