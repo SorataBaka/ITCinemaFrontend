@@ -1,6 +1,6 @@
 ﻿@{
 }
-<script src="/js/dashboard.js"></script>
+
 <link rel="stylesheet" href="./css/dashboard.css">
 
  <div class="Main-Body">
@@ -18,10 +18,12 @@
             <div id="profileBalance"></div>
 
             <div class="button">
-                <button class="btn btn-primary" style="margin-top: 20px" onclick="location.href='./ticket'">My Ticket</button>
-                <button class="btn btn-primary" style="margin-top: 20px" onclick="location.href='./usertopup'">Top Up</button>
+                <button class="btn btn-primary" style="margin-top: 20px" onclick="window.location.replace('/myticket')">My Ticket</button>
+                <button class="btn btn-primary" style="margin-top: 20px" onclick="window.location.replace('/topup')">Top Up</button>
             </div>
             
         </div>
     
 </div>
+
+<script src="/js/dashboard.js"></script>

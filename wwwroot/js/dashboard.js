@@ -52,4 +52,3 @@ const getUsername = async () => {
 
 }
 
-window.onload = getUsername;
