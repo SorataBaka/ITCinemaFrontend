@@ -1,0 +1,25 @@
+﻿@{
+ViewData["Title"] = "Top Up";
+}
+
+<script src="/js/topup.js"></script>
+<link rel="stylesheet" href="/css/topup.css">
+
+<div class="Main-Body">
+
+    <div class="text-center">
+
+        <h5 class="display-4">Top Up</h5>
+
+        <div class="input-box" style="margin-bottom:10px">
+            <label>Rp. </label>
+            <input type="number" class="form-control" id="InputAmount" placeholder="50000">
+        </div>
+
+        <button onclick="topup()" type="submit" class="btn btn-primary">Top up</button>    
+
+    </div>
+
+    <label id="message-alert" style="opacity: 0;">-</label>
+
+</div>
