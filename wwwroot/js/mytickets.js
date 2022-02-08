@@ -7,7 +7,7 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 const getTickets = async () => {    
     const ticketsBody = document.getElementById("content-wrapper");    
     // https://api.itcinema.xyz/user/getbuyedtickets
-    const response = await fetch("http://localhost:3000/user/getbuyedtickets", {
+    const response = await fetch("https://api.itcinema.xyz/user/getbuyedtickets", {
         method: "POST",
         headers: {
             "Authorization": `Bearer ${token}`
