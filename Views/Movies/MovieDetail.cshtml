@@ -7,7 +7,6 @@
 <div class="container my-5" id="mainContainer">
   <div class="row">
     <div class="col mx-auto d-block" style="max-width:50%">
-        @*Foto masih dummy data (blm ada datanya di API)*@
       <img
       style="max-width:100%"
         alt="movie"
@@ -66,8 +65,6 @@
     
 <script>
 
-    
-
     var today = new Date();
     var todayDate = today.getFullYear()+'-'+(("0"+(today.getMonth()+1)).slice(-2))+'-'+(("0"+today.getDate()).slice(-2))
     var tomorrowDate = today.getFullYear()+'-'+(("0"+(today.getMonth()+1)).slice(-2))+'-'+(("0"+(today.getDate()+1)).slice(-2))
@@ -94,6 +91,7 @@
     }
 
     const getTheaterDetailList = async(theatersData) =>{
+        const TheaterMainContainer = document.getElementById("theaterMain");
         let theaterNames=[];
            for(let i =0; i<theatersData.PlayAt.length;i++){
                let tempData = await getTheaterName(theatersData.PlayAt[i].TheaterID);
@@ -103,7 +101,7 @@
                const TheaterRow = document.createElement("div");
                 TheaterRow.classList.add("row");
                 TheaterRow.classList.add("py-2");
-
+                TheaterRow.classList.add("theaterRow");
 
                 const ColTheaterName = document.createElement("div");
                 ColTheaterName.classList.add("col");
@@ -145,8 +143,7 @@
                 ContainerTheaterTime.appendChild(TheaterTimeA);
                 }
                
-                const TheaterMainContainer = document.getElementById("theaterMain");
-
+                
                 TheaterRow.appendChild(ColTheaterName);
                 ColTheaterName.appendChild(TheaterNameP);
                 TheaterRow.appendChild(ColTheaterTime);
@@ -198,18 +195,37 @@
         }
         
     }
+    const cleanUp = ()=>{
+         const TheaterRows = document.getElementsByClassName("theaterRow");
+        for(let i =0;i< TheaterRows.length; i++){
+            TheaterRows[i].remove();
+        }
+        const TheaterMainContainer = document.getElementById("theaterMain");
+        const loadingTheaterRows = document.createElement("div");
+        loadingTheaterRows.classList.add("loadingTheaterRows")
+        loadingTheaterRows.innerText = "Loading...";
+        TheaterMainContainer.appendChild(loadingTheaterRows);
+        return loadingTheaterRows;
+    }
+    const getTheaterDetailToday = async () =>{
+       const loadingTheaterRows = cleanUp();
+        let date = document.getElementById("today-date").innerHTML;
+        const theatersData = await getTheater(movieID, date);
+        await getTheaterDetailList(theatersData);
+        loadingTheaterRows.remove();
+    }
+    const getTheaterDetailTomorrow = async () =>{
+       const loadingTheaterRows = cleanUp();
+        let date = document.getElementById("tomorrow-date").innerHTML
+        const theatersData = await getTheater(movieID, date);
+        await getTheaterDetailList(theatersData);
+        loadingTheaterRows.remove();
+    }
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const movieID = urlParams.get('id');
-    const getTheaterDetailToday = () =>{
-        let date = document.getElementById("today-date").innerHTML;
-        getMovie(movieID,date);
-    }
-    const getTheaterDetailTomorrow = () =>{
-        let date = document.getElementById("tomorrow-date").innerHTML
-        getMovie(movieID,date);
-    }
+    
     try{
         getMovie(movieID);
     }catch(e){
