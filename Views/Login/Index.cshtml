@@ -1,4 +1,7 @@
-﻿<script src="/js/login.js"></script>
+﻿@{
+ViewData["Title"] = "Login";
+}
+<script src="/js/login.js"></script>
 <link rel="stylesheet" href="/css/login.css">
 
 
@@ -11,7 +14,7 @@
     <div class="form-group" style="margin-bottom:10px">
       <input type="password" class="form-control" id="InputPassword" placeholder="Password">
     </div>
-      <div id="error-message-email" role="alert">
+      <div id="error-message" role="alert">
     </div>
     <button onclick="login()" type="submit" class="btn btn-primary">Login</button>
     <div class="form-group" style="margin-bottom:10px; margin-top:15px;">

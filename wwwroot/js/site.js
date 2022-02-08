@@ -12,14 +12,11 @@ const verifyToken = async() => {
     }
   }).catch(err => {return err})
   const responseJson = await response.json();
-  console.log(JSON.stringify(responseJson));
   if(responseJson.Data.length === 0) return
   const user = responseJson.Data[0]
   window.sessionStorage.setItem("user", JSON.stringify(user))
-  document.querySelector("#Dashboard").style.display = "block"
   document.querySelector("#Login").style.display = "none"
   document.querySelector("#Logout").style.display = "block"
-  
   document.querySelector("#Logout").addEventListener("click", () => {
     window.sessionStorage.removeItem("token")
     window.location.replace("/")
