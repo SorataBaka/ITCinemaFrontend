@@ -1,4 +1,8 @@
 ﻿var token = window.sessionStorage.getItem("token");
+
+if (token == null) {
+    window.location.href = "./login";
+}
 const getUsername = async () => {
     const response = await fetch(`https://itcinemabackend-production.up.railway.app/user/getuser`, {
         method: "GET",
@@ -7,10 +11,6 @@ const getUsername = async () => {
             "Content-Type": "application/json"
         }
     })
-
-    if (token == null) {
-        window.location.href = "./login";
-    }
 
 
     const datas = await response.json();
