@@ -1,0 +1,86 @@
+﻿#content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 64px;
+    margin-bottom: 100px;
+}
+
+.ticket-item-wrapper {
+    display: flex;
+    padding: 10px;
+    margin: 16px 16px;
+    min-width: 1000px;
+    width: 100%;
+    height: 250px;
+    border-radius: 15px;
+    box-shadow: 3px 1px 17px 1px rgba(0,0,0,0.49);
+    -webkit-box-shadow: 3px 1px 17px 1px rgba(0,0,0,0.49);
+    -moz-box-shadow: 3px 1px 17px 1px rgba(0,0,0,0.49);
+}
+
+.ticket-item-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    min-height: 0;
+}
+
+.ticket-item-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    min-height: 0;
+}
+
+.ticket-item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.ticket-item > .poster {
+    height: 100%;
+    border-radius: 15px;
+}
+
+.ticket-item-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+    min-width: 0;
+    width: 100%;
+}
+
+.ticket-item-details > h1 {
+    display: block;
+    font-size: 48px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ticket-item-details > h2 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.qr-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.qr {
+    height: 100%;
+}
+
+.transaction-id {
+    align-self: flex-end;
+    margin-right: 20px;
+}
