@@ -128,13 +128,17 @@
         document.getElementById("mainContainer").style.visibility = 'hidden';
         const theaterData = await getTheater(theaterID);
         document.getElementById("theaterName").innerText = theaterData[0].TheaterName
-        document.getElementById("theaterSeats").innerText = theaterData[0].TheaterSeats === 122 ? 'Seats: 102' : `Seats: ${theaterData[0].TheaterSeats}`;
+        if(theaterData[0].TheaterSeats === 122){
+            document.getElementById("theaterSeats").innerText = 'Seats: 102' ;
+        }else if(theaterData[0].TheaterSeats === 90 || theaterData[0].TheaterSeats === 92){
+            document.getElementById("theaterSeats").innerText =  'Seats: 74';
+        }else{
+            document.getElementById("theaterSeats").innerText = `Seats: ${theaterData[0].TheaterSeats}`;
+        }
         await getTheaterDetails(theaterID,todayDate);
         
       document.getElementById("mainContainer").style.visibility = 'visible';
     }
-
-
 
     const getTheaterDetailToday = async ()=>{
         await getTheaterDetails(theaterID,todayDate);

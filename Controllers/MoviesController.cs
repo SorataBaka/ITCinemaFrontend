@@ -11,5 +11,9 @@ namespace ITCinemaFrontend.Controllers
         public IActionResult MovieDetails(string id) {
             return View("MovieDetail");
         }
+        public IActionResult CreateMovie()
+        {
+            return View("CreateMovie");
+        }
     }
 }
