@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/schedule.css">
+  <script src="./scripts/schedule.js"></script>
+</head>
+<body>
+  <div class="Main-Body">
+    <div class="Movie-Details">
+      <div class="Movie-Details-Image"></div>
+      <div class="Movie-Details-Text">
+        <h5 class="Movie-Details-Header">Title :</h5>
+        <input type="text" class="form-control input" disabled id="Title">
+        <h5 class="Movie-Details-Header">Director :</h5>
+        <input type="text" class="form-control input" disabled id="Director">
+        <h5 class="Movie-Details-Header">Description :</h5>
+        <input type="text" class="form-control input" disabled id="Description">
+        <h5 class="Movie-Details-Header">Duration :</h5>
+        <input type="text" class="form-control input" disabled id="Duration">
+      </div>
+    </div>
+    <div class="Schedule-Creation">
+      <div class="Button-Divisor">
+        <input type="number" name="Day"class="form-control date-control" placeholder="Day" id="Day">
+        <input type="number" name="Month" class="form-control date-control" placeholder="Month" id="Month">
+        <input type="number" name="Year" class="form-control date-control" placeholder="Year" id="Year">
+        <button class="btn btn-primary" onclick="gettoday()" style="margin-right: 0px; margin-left: 0px;">Today</button>
+        <button class="btn btn-primary" onclick="create()">Create</button>
+      </div>
+      <div class="Schedule-Creation-Collumn">
+        <!-- <div class="Schedule">
+          
+          <div class="Schedule-Form">
+
+            <input type="number" name="Price" class="form-control schedule-control" id="Price" placeholder="Price">
+
+            <select name="Theatres" id="Theatres" class="form-control schedule-control">
+              <option value="">Pick a theatre</option>
+            </select>
+
+            <button class="btn btn-danger delete-button">Delete</button>
+
+          </div>
+
+          <div class="Available-Time-List">
+            <div class="Time">
+              <span>12.06</span>
+            </div>
+            <div class="Time">
+              <span>14.06</span>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
