@@ -46,6 +46,7 @@
 
 .ticket-item > .poster {
     height: 100%;
+    width: 162px;
     border-radius: 15px;
 }
 
