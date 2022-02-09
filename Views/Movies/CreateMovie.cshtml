@@ -10,18 +10,18 @@
       <form action="" method="post" id="MovieForm">
         <div class="formInput formTitle">
           <label for="title">Movie Title: </label>
-          <input type="text" id="title" name="title" placeholder="Title" />
+          <input type="text" id="title" name="MovieTitle" placeholder="Title" />
         </div>
         <div class="formInput formDesc">
           <label for="desc">Movie Description: </label>
-          <input type="text" id="desc" name="desc" placeholder="Description" />
+          <input type="text" id="desc" name="MovieDescription" placeholder="Description" />
         </div>
         <div class="formInput formDirector">
           <label for="director">Movie Director: </label>
           <input
             type="text"
             id="director"
-            name="director"
+            name="MovieDirector"
             placeholder="Director"
           />
         </div>
@@ -30,15 +30,15 @@
           <input
             type="number"
             id="duration"
-            name="duration"
+            name="MovieDuration"
             placeholder="Minutes"
           />
         </div>
         <div class="formInput formStatus">
           <label for="status">Movie Status: </label>
-          <select name="status" id="status">
-            <option value="active">Active</option>
-            <option value="comingsoon">Coming Soon</option>
+          <select name="MovieStatus" id="status">
+            <option value=1>Active</option>
+            <option value=3>Coming Soon</option>
           </select>
         </div>
         <div class="formInput formActors">
@@ -46,7 +46,7 @@
           <input
             type="text"
             id="actors"
-            name="actors"
+            name="Actors"
             placeholder="Actor1, Actor2, ..."
           />
         </div>
@@ -58,13 +58,14 @@
         </div>
         <div class="formInput formImg">
           <label for="img">Image: </label>
-          <input type="file" id="img" name="img" />
+          <input type="file" id="img" name="Image" />
         </div>
         <button id="create">Create</button>
       </form>
     </div>
 
 <script>
+    const token = window.sessionStorage.getItem("token");
         const getGenres = async ()=>{
             const genresContainer = document.getElementById("genresContainer");
             genresContainer.innerText = "Loading...";
@@ -80,7 +81,6 @@
                 genreCheckBox.id = GenresData[i].GenreID;
                 genreCheckBox.classList.add("genreCheckBox");
                 genreCheckBox.setAttribute("type","checkbox");
-                genreCheckBox.setAttribute("name",GenresData[i].GenreName);
                 genreCheckBox.setAttribute("value",GenresData[i].GenreName);
 
 
@@ -106,52 +106,31 @@
             return SelectedGenres;
         }
 
-      const form = document.getElementById("MovieForm");
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        let movieTitle = document.getElementById("title").value;
-        let movieDescription = document.getElementById("desc").value;
-        let movieDirector = document.getElementById("director").value;
-        let movieDuration = document.getElementById("duration").value;
-        let movieStatus = document.getElementById("status").value;
-        let movieActors = document.getElementById("actors").value;
-        let splitedActors = movieActors.split(",");
-        let Actors = splitedActors.map((actors) => {
-          return actors.trim();
-        });
-        checkSelectedGenres();
-        let movieGenres = checkSelectedGenres();
-        let movieImage = document.getElementById("img").files[0];
-
-
-        $.ajax({
-            type:"POST",
-            url: "https://itcinemabackend-production.up.railway.app/admin/createmovies",
-            data:{
-                 "ResultCode": 0,
-                 "ErrorMessage": "Success",
-                 "Data": {
-                    "MovieTitle": movieTitle,
-                    "MovieDescription": movieDescription,
-                    "MovieDirector": movieDirector,
-                    "MovieDuration": movieDuration,
-                    "MovieStatus": movieStatus,
-                    "Actors": movieActors,
-                    "Genre": movieGenres,
-                    "Image": movieImage
-                }
-            },
-            success: ()=>{
-                movieTitle = document.getElementById("title").value = "";
-                movieDescription = document.getElementById("desc").value = "";
-                movieDirector = document.getElementById("director").value = "";
-                movieDuration = document.getElementById("duration").value = "";
-                movieActors = document.getElementById("actors").value = "";
-                getGenres();
-            }
-        })
-      });
       
+
+      const sendData = ()=>{
+          const XHR = new XMLHttpRequest();
+          const FD = new FormData(form);
+          const Genres = document.getElementsByClassName("genreCheckBox");
+            for(let i =0;i< Genres.length;i++){
+                if(Genres[i].checked === true){
+                  FD.append("Genre",Genres[i].id);
+                }
+            }
+          XHR.addEventListener("error",(e)=>{
+              alert("ERROR");
+          });
+
+          XHR.open("POST","https://itcinemabackend-production.up.railway.app/admin/createmovies" );
+          XHR.setRequestHeader("Authorization", `Bearer ${token}`)
+          XHR.send(FD);
+      }
+
+      const form = document.getElementById("MovieForm");
+        form.addEventListener("submit", (e)=>{
+            e.preventDefault();
+            sendData();
+        })
+
       getGenres();
-    </script>
+</script>
