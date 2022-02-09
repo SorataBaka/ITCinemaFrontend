@@ -177,16 +177,16 @@
             createMovieBtn.id = "createMovieBtn";
             createMovieBtn.innerHTML = "Create Movies";
             createMovieBtn.setAttribute("onclick", "navigateCreateMovie()");
+            createMovieBtn.style.backgroundColor = "#FFC107";
             createMovieBtn.style.cursor = "pointer";
-            createMovieBtn.style.backgroundColor = "#289CFF";
             createMovieBtn.style.margin = "30px 15px 10px 0";
             createMovieBtn.style.padding = "0.5em 1em";
             createMovieBtn.style.borderRadius = "10px";
             createMovieBtn.onmouseover = ()=>{
-                createMovieBtn.style.backgroundColor = "#1e79c7";
+                createMovieBtn.style.backgroundColor = "#c29306";
             }
             createMovieBtn.onmouseleave = ()=>{
-                createMovieBtn.style.backgroundColor = "#289CFF";
+                createMovieBtn.style.backgroundColor = "#FFC107";
             }
             const movieFirstTitle = document.getElementById("movieFirstTitle");
             movieFirstTitle.style.display="flex";
