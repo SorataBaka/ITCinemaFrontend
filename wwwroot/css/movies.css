@@ -2,6 +2,24 @@
     font-family: 'Poppins', sans-serif;
 }
 
+#movieFirstTitle{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+#createMovieBtn {
+    cursor: pointer;
+    background-color: #289CFF;
+    margin: 30px 15px 10px 0;
+    padding: 0.5em 1em;
+    border-radius: 10px;
+}
+
+#createMovieBtn:hover{
+    background-color: #1e79c7;
+}
+
 a {
     color: inherit;
 }
@@ -9,6 +27,7 @@ a {
 .titleNowPlaying {
     margin-top: 30px;
     margin-left: 15px;
+    padding: 0.5em 1em 0.5em 0;
 }
 
 .titleComingSoon {

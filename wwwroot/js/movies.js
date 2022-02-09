@@ -45,6 +45,17 @@
 
 }
 
+const navigateCreateMovie = async() => {
+    const token = window.sessionStorage.getItem("token");
+    const response = await fetch("https://itcinemabackend-production.up.railway.app/user/getuser", {
+        headers: {
+            token: token
+        }
+    })
+    const data = await response.json();
+    console.log(data);
+}
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const movieID = urlParams.get('id');
