@@ -1,8 +1,11 @@
 ﻿
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-
+*{
+    font-family: "poppins";
+    font-size: 13px;
+}
 .createmovietitle{
-    margin-top:50px;
+    padding: 10px;
 }
 .formContainer {
     display: flex;
@@ -13,9 +16,9 @@
 }
 
 form {
-    border: 1px solid black;
     padding: 20px;
     border-radius: 10px;
+    background-color: #289CFF;
 }
 
 .formInput {
@@ -33,12 +36,11 @@ form {
     color: white;
     font-size: 1.3rem;
     cursor: pointer;
-    background-color: #289cff;
+    background-color: #1769b1;
     border: none;
     border-radius: 10px;
     padding: 0.5em 1em;
     margin-left: 10px;
-    margin-top: 40px;
 }
 
 #create:hover {
@@ -77,14 +79,12 @@ input[type="checkbox"] + label {
     display: inline-block;
     padding: 10px;
     cursor: pointer;
-    border: 1px solid black;
     color: black;
     background-color: white;
     margin-bottom: 10px;
 }
 
 input[type="checkbox"]:checked + label {
-    border: 1px solid white;
     color: white;
     background-color: black;
 }
@@ -95,4 +95,20 @@ input[type="checkbox"]:checked + label {
     margin: 0 6px;
     border-radius: 10px;
     overflow:auto;
+    border: none;
 }
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: honeydew;
+    border-radius: 10px;
+  }
+  

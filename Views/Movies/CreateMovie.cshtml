@@ -5,16 +5,16 @@
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
   crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/createMovie.css">
-<h1 class="text-center createmovietitle">Create Movie</h1>
  <div class="formContainer">
-      <form action="" method="post" id="MovieForm">
+      <form action="" method="post" id="MovieForm" enctype="multipart/form-data">
+        <h1 class="text-center createmovietitle">Create Movie</h1>  
         <div class="formInput formTitle">
           <label for="title">Movie Title: </label>
-          <input type="text" id="title" name="MovieTitle" placeholder="Title" />
+          <input type="text" id="title" name="MovieTitle" placeholder="Title" class="form-control"/>
         </div>
         <div class="formInput formDesc">
           <label for="desc">Movie Description: </label>
-          <input type="text" id="desc" name="MovieDescription" placeholder="Description" />
+          <input type="text" id="desc" name="MovieDescription" placeholder="Description"  class="form-control"/>
         </div>
         <div class="formInput formDirector">
           <label for="director">Movie Director: </label>
@@ -23,6 +23,7 @@
             id="director"
             name="MovieDirector"
             placeholder="Director"
+             class="form-control"
           />
         </div>
         <div class="formInput formDuration">
@@ -32,11 +33,12 @@
             id="duration"
             name="MovieDuration"
             placeholder="Minutes"
+             class="form-control"
           />
         </div>
         <div class="formInput formStatus">
           <label for="status">Movie Status: </label>
-          <select name="MovieStatus" id="status">
+          <select name="MovieStatus" id="status" class="custom-select">
             <option value=1>Active</option>
             <option value=3>Coming Soon</option>
           </select>
@@ -48,6 +50,7 @@
             id="actors"
             name="Actors"
             placeholder="Actor1, Actor2, ..."
+             class="form-control"
           />
         </div>
         <div class="formInput formGenres">
@@ -58,7 +61,7 @@
         </div>
         <div class="formInput formImg">
           <label for="img">Image: </label>
-          <input type="file" id="img" name="Image" />
+          <input type="file" id="img" name="Image" class="form-control-file" />
         </div>
         <button id="create">Create</button>
       </form>

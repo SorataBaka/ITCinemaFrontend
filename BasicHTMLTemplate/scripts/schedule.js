@@ -83,7 +83,6 @@ const submit = async() => {
     MovieID: globalMovieID,
     Playings: listOfTheatreTimes
   })
-  console.log(JSON.stringify(requestBody))
   const request = await fetch(`https://api.itcinema.xyz/admin/createschedules`, {
     method: "POST",
     headers: {
@@ -92,7 +91,6 @@ const submit = async() => {
     },
     body: requestBody
   }).catch(err => {
-    console.log(err)
     return alert("Failed to create schedule. Please try again later.")
   })
   const response = await request.json()
@@ -100,7 +98,6 @@ const submit = async() => {
     alert("Failed to submit schedule. Please try again later.")
     return
   }
-  console.log(JSON.stringify(response))
   alert("Successfully added new schedule.")
   return window.location.reload()
 }

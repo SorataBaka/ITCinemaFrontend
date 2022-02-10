@@ -41,25 +41,40 @@ const checkSelectedGenres = () => {
 
 
 
-const sendData = () => {
+const sendData = async() => {
     const XHR = new XMLHttpRequest();
     const FD = new FormData(form);
+    FD.delete("Genre");
+    FD.delete("Actors")
     const Genres = document.getElementsByClassName("genreCheckBox");
     for (let i = 0; i < Genres.length; i++) {
         if (Genres[i].checked === true) {
             FD.append("Genre", Genres[i].id);
         }
     }
+    const actors = document.getElementById("actors").value;
+    if(actors == ""){
+        return alert("Please provide the actors")
+    }
+    const actorArray = actors.split(",")
+    for(const actor of actorArray){
+        FD.append("Actors", actor)
+    }
+
+
     XHR.addEventListener("error", (e) => {
         alert("ERROR");
     });
 
-    XHR.open("POST", "https://itcinemabackend-production.up.railway.app/admin/createmovies");
+    XHR.open("POST", "https://api.itcinema.xyz/admin/createmovies");
     XHR.setRequestHeader("Authorization", `Bearer ${token}`);
-    XHR.send(FD);
-    alert("Data Sent!");
-    window.location.replace(`/`);
-}
+    XHR.send(FD).then(() => {
+        alert("Data Sent!");
+        return window.location.replace("/movies");
+    }).catch(err => {
+        alert("Failed to send")
+        return
+    })
 
 const form = document.getElementById("MovieForm");
 form.addEventListener("submit", (e) => {
