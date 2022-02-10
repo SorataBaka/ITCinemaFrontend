@@ -2,9 +2,16 @@ const changeBackground = (nowPlaying) => {
   const carousel = document.getElementById("Main-Carousel")
   const randomPick = Math.floor(Math.random() * nowPlaying.length)
   carousel.style.backgroundImage = `url(${nowPlaying[randomPick].PosterURL})`
-    carousel.href = `/movies/moviedetails?id=${nowPlaying[randomPick].MovieID}`
+  // carousel.href = `/movies/moviedetails?id=${nowPlaying[randomPick].MovieID}`
+
+  carousel.addEventListener("click", () => {
+    window.location.replace(`/movies/moviedetails?id=${nowPlaying[randomPick].MovieID}`)
+  })
+
+
+
   document.querySelector('.Main-Carousel-Title').innerHTML = nowPlaying[randomPick].MovieTitle
-  document.querySelector('.Main-Carousel-Description').innerHTML = nowPlaying[randomPick].MovieDescription
+  // document.querySelector('.Main-Carousel-Description').innerHTML = nowPlaying[randomPick].MovieDescription
   document.querySelector('.Main-Carousel-Author').innerHTML = nowPlaying[randomPick].MovieDirector
 }
 const HandleCarousel = async(nowPlaying) => {
@@ -28,6 +35,7 @@ const GetNowPlaying = async() => {
     newChild.classList.add("MovieBox")
     newChild.href = `/movies/moviedetails?id=${movie.MovieID}`
     newChild.style.backgroundImage = `url(${movie.PosterURL})`
+
     movieList.appendChild(newChild)
   }
   changeBackground(nowPlaying)

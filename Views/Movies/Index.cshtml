@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="./css/movies.css">
 
 
-<div class="container">
+<div class="Main-Body">
     <div class="NowPlayingDiv">
         <div id="movieFirstTitle" style="display:flex; align-items:center">
             <h3 class="titleNowPlaying">Now Playing</h3>
@@ -12,7 +12,7 @@
     </div>
     <div class="ComingSoonDiv">
         <h3 class="titleComingSoon">Coming Soon</h3>
-        <div id="movieListComingSoon"></div>
+        <div id="movieListComingSoon" class="Movies-List"></div>
     </div>
 </div>
 
@@ -50,16 +50,16 @@
                 for (var x = 0; x < datas.Data.length; x++){
                     const movieData = datas.Data[x];
                     document.getElementById("movieListNowPlaying").innerHTML +=
-                    ` <div class="card text-center" style="width: 17rem; margin: 15px">
+                    ` <div class="card text-center" style="width: 290px; margin: 15px">
                         <a href="/movies/moviedetails?id=${movieData.MovieID}">
-                            <img class="card-img-top" style="height: 20rem;" src="${movieData.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
+                            <img class="card-img-top" src="${movieData.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
                             <div class="card-body">
                                 <h5 <span style="margin: auto; id="">${movieData.MovieTitle}</span></h5>
                             </div>
                         </a>
                         <div id="card-actions" class="card-actions">
-                            <button type="button" class="btn btn-warning" onclick="createschedule('${movieData.MovieID}')"><img style="width: 40px;height: 40px;"  src="/assets/schedule_icon.png" alt="del-icon"></button>
-                            <button type="button" onclick="deleteMovie('${movieData.MovieID}')" class="btn btn-danger"><img style="width: 20px;height: 20px;" src="/assets/delete_icon.png" alt="del-icon"></button>
+                            <button type="button" class="btn btn-warning Button-Action" onclick="createschedule('${movieData.MovieID}')"><img style="width: 40px;height: 40px;"  src="/assets/schedule_icon.png" alt="del-icon"></button>
+                            <button type="button" onclick="deleteMovie('${movieData.MovieID}')" class="btn btn-danger Button-Action"><img style="width: 20px;height: 20px;" src="/assets/delete_icon.png" alt="del-icon"></button>
                         </div>
                     </div>
                     `;
@@ -75,16 +75,16 @@
                 for (var x = 0; x < datas2.Data.length; x++){
                     const movieData2 = datas2.Data[x];
                     document.getElementById("movieListComingSoon").innerHTML +=
-                    ` <div class="card text-center" style="width: 17rem; margin: 15px">
+                    ` <div class="card text-center"style="width: 290px; margin: 15px">
                         <a href="/movies/moviedetails?id=${movieData2.MovieID}">
-                            <img class="card-img-top" style="height: 20rem;" src="${movieData2.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
+                            <img class="card-img-top" src="${movieData2.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
                             <div class="card-body">
                                 <h5 <span id="">${movieData2.MovieTitle}</span></h5>
                             </div>
                         </a>
                          <div id="card-actions" class="card-actions">
-                            <button type="button" class="btn btn-warning" onclick="createschedule('${movieData2.MovieID}')"><img style="width: 40px;height: 40px;"  src="/assets/schedule_icon.png" alt="del-icon"></button>
-                            <button type="button" onclick="deleteMovie('${movieData2.MovieID}')" class="btn btn-danger"><img style="width: 20px;height: 20px;" src="/assets/delete_icon.png" alt="del-icon"></button>
+                            <button type="button" class="btn btn-warning Button-Action" onclick="createschedule('${movieData2.MovieID}')"><img style="width: 40px;height: 40px;"  src="/assets/schedule_icon.png" alt="del-icon"></button>
+                            <button type="button" onclick="deleteMovie('${movieData2.MovieID}')" class="btn btn-danger Button-Action"><img style="width: 20px;height: 20px;" src="/assets/delete_icon.png" alt="del-icon"></button>
                         </div>
                     </div>
                     `;
@@ -100,9 +100,9 @@
                 for (var x = 0; x < datas.Data.length; x++){
                     const movieData = datas.Data[x];
                     document.getElementById("movieListNowPlaying").innerHTML +=
-                    ` <div class="card text-center" style="width: 17rem; margin: 15px">
+                    ` <div class="card text-center" style="width: 290px; margin: 15px">
                         <a href="/movies/moviedetails?id=${movieData.MovieID}">
-                            <img class="card-img-top" style="height: 20rem;" src="${movieData.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
+                            <img class="card-img-top" src="${movieData.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
                             <div class="card-body">
                                 <h5 <span style="margin: auto; id="">${movieData.MovieTitle}</span></h5>
                             </div>
@@ -121,9 +121,9 @@
                 for (var x = 0; x < datas2.Data.length; x++){
                     const movieData2 = datas2.Data[x];
                     document.getElementById("movieListComingSoon").innerHTML +=
-                    ` <div class="card text-center" style="width: 17rem; margin: 15px">
+                    ` <div class="card text-center" style="width: 290px; margin: 15px">
                         <a href="/movies/moviedetails?id=${movieData2.MovieID}">
-                            <img class="card-img-top" style="height: 20rem;" src="${movieData2.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
+                            <img class="card-img-top" src="${movieData2.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
                             <div class="card-body">
                                 <h5 <span id="">${movieData2.MovieTitle}</span></h5>
                             </div>

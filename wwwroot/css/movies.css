@@ -1,4 +1,5 @@
-﻿.container {
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+.Main-Body {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,8 +8,7 @@
     flex-direction: column;
     width: 100vw;
     margin-bottom: 100px;
-}
-
+  }
 #movieFirstTitle{
     display: flex;
     align-content: center;
@@ -51,7 +51,9 @@ a {
     margin: 20px;
     border-radius: 10px;
     padding: 20px;
+    width: 80%;
 }
+
 .ComingSoonDiv {
     display: flex;
     flex-direction: column;
@@ -60,25 +62,35 @@ a {
     margin: 20px;
     border-radius: 10px;
     padding: 20px;
+    width: 80%;
 }
 #movieListNowPlaying {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
+    width: 100%;
 
 }
 
-#movieListComingSoon {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
+.card{
+    border-radius: 10px;
+    width: max-content;
+    border: 0px;
+    display: inline-flex;
+    background-color: #14548b;
+
+}
+.card-body {
+    height: 130px;
+    width: 290px;
+    color: white;
 }
 .card-actions {
     display: flex;
     flex-direction: row;
     justify-content:flex-end;
+    padding: 10px;
 }
 #card-actions button {
     padding : 0;
@@ -89,6 +101,45 @@ a {
 #card-actions img {
     padding: 1px;
     margin: 0;
+    height: auto;
+    align-items: flex-end;
+}
+.card-img-top {
+    /* Perbandingan 1: 1.45 */
+    width: 290px;
+    height: 426px;
+
 }
 
+.Movies-List {
+    width: 100%;
+    height: fit-content;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    white-space: nowrap;
+    overflow: auto;
+    overflow-y: hidden;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    flex-direction: column;
+  }
 
+  /* width */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: honeydew;
+    border-radius: 10px;
+  }
+  

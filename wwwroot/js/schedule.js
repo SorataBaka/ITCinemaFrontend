@@ -224,6 +224,7 @@ const create = async () => {
       if (schedules.length == 0) {
           return TimeList.innerHTML = "No Available Schedule"
       }
+      TimeList.innerHTML = ""
     for(const schedule of schedules){
       const time = document.createElement("div")
       time.classList.add("Time-Selection")
@@ -240,7 +241,6 @@ const create = async () => {
 
       time.appendChild(input)
         time.appendChild(label)
-        TimeList.innerHTML = ""
       TimeList.appendChild(time)
     }
   }

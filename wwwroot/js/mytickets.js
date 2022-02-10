@@ -33,7 +33,7 @@ const getTickets = async () => {
                         <div class="ticket-item-content">
                             <div class="ticket-item-details">
                                 <h1>${title}</h1>
-                                <h2>${weekdays[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}, ${date.getHours() < 10 ? "0" : ""}${date.getHours()}:${date.getMinutes()}</h2>
+                                <h2>${weekdays[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}, ${date.getHours() < 10 ? "0" : ""}${date.getHours()}:${("0" +date.getMinutes()).slice(-2)}</h2>
                                 <h2>${studio} - Seat ${seat}</h2>
                             </div>
                             <div class="qr-wrapper">

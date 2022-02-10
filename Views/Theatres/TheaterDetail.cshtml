@@ -1,33 +1,33 @@
 ﻿@{
 }
 <link rel="stylesheet" href="./css/theaterDetail.css">
-<div class="container my-5" id="mainContainer">
-  <div class="row">
-    <div class="col  d-block" >
-     <h2 id="theaterName"></h2>
-     <h2 id="theaterSeats"></h2>
-    </div>
-  </div>
+<div class="Main-Body" id="mainContainer">
+    <div class="Main-Block">
+        <div class="col  d-block Theater-Details">
+            <h2 id="theaterName"></h2>
+            <h2 id="theaterSeats"></h2>
+        </div>
 
-  <div class="container pt-5" id="movieMain">
-    <div class="row">
-        <div class="col">
-            <p>Movies Available:</p>
+        <div class="Movies-Available" id="movieMain">
+            
+            <p style="margin-bottom: 10px;">Movies Available:</p>
+            <div class="Table-Header-Group">
+                <p class="Table-Header">Movie</p>
+                <p class="Table-Header">Showtime</p>
+            </div>
+            <div class="row">
+                <div class="col-sm"></div>
+                <div style="display:inline-flex; justify-content: space-around" class="col-sm">
+                    <div onclick="getTheaterDetailToday()" style="cursor: pointer;" id="today-date"
+                        class="Date Active-Date">today</div>
+                    <div onclick="getTheaterDetailTomorrow()" style="cursor: pointer;" id="tomorrow-date"
+                        class="Date Non-Active-Date">tomorrow</div>
+                </div>
+            </div>
+
         </div>
     </div>
-    <div class="row text-center bg-secondary py-3 rounded">
-        <div class="col ">Movie</div>
-        <div class="col ">Showtime</div>
-    </div>
-    <div class="row">
-        <div class="col-sm"></div>
-        <div style="display:inline-flex; justify-content: space-around" class="col-sm">
-            <div onclick="getTheaterDetailToday()" style="cursor: pointer;" id="today-date">today</div>
-            <div onclick="getTheaterDetailTomorrow()" style="cursor: pointer;" id="tomorrow-date">tomorrow</div>
-        </div>
-    </div>
 
-</div>
 
 </div>
 

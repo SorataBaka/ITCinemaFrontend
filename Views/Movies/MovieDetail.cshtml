@@ -1,61 +1,57 @@
 ﻿@{
 }
 <link rel="stylesheet" href="/css/movieDetail.css">
-<div class="container my-5" id="mainContainer">
-  <div class="row">
-    <div class="col mx-auto d-block" style="max-width:50%">
-      <img
-      style="max-width:100%"
-        alt="movie"
-        id="movieIMG"
-      />
-    </div>
+<div class="Main-Body" id="mainContainer">
+  <div class="Main-Block">
+    <div class="row">
+      <div class="col mx-auto d-block" style="max-width:50%">
+        <img style="max-width:100%" alt="movie" id="movieIMG" />
+      </div>
 
-    <div class="col">
-      <div class="container">
+      <div class="col">
+        <div class="container Movie-Description">
           <div class="row">
             <h2><span id="movieTitle"></span></h2>
-            </div>
-        <div class="row">
-          <p class="col">Genre : <span id="movieGenre"></span></p>
+          </div>
+          <div class="row">
+            <p class="col">Genre : <span id="movieGenre"></span></p>
+          </div>
+          <div class="row">
+            <p class="col">Director : <span id="movieDirector"></span></p>
+          </div>
+          <div class="row">
+            <p class="col">Actor : <span id="movieActor"></span></p>
+          </div>
+          <div class="row">
+            <p class="col">Duration : <span id="movieDuration"></span></p>
+          </div>
+          <div class="mt-4">
+            <p style="color: black;">Description :</p>
+            <p id="movieDescription">Lorem Ipsum</p>
+          </div>
         </div>
-        <div class="row">
-          <p class="col">Director : <span id="movieDirector"></span></p>
+      </div>
+    </div>
+
+    <div class="container Main-Schedule" id="theaterMain">
+      <div class="row">
+        <div class="col">
+          <p class="Playing-At">Playing At:</p>
         </div>
-        <div class="row">
-          <p class="col">Actor : <span id="movieActor"></span></p>
-        </div>
-        <div class="row">
-          <p class="col">Duration : <span id="movieDuration"></span></p>
-        </div>
-        <div class="mt-4">
-          <p>Description :</p>
-          <p id="movieDescription">Lorem Ipsum</p>
+      </div>
+      <div class="Table-Header-Group">
+        <div class="Table-Header">Theater</div>
+        <div class="Table-Header">ShowTime</div>
+      </div>
+      <div class="row">
+        <div class="col-sm"></div>
+        <div style="display:inline-flex; justify-content: space-around" class="col-sm">
+          <div onclick="getTheaterDetailToday()" style="cursor: pointer;" id="today-date" class="Date Active-Date">today</div>
+          <div onclick="getTheaterDetailTomorrow()" style="cursor: pointer;" id="tomorrow-date" class="Date Non-Active-Date">tomorrow</div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="container pt-5" id="theaterMain">
-    <div class="row">
-        <div class="col">
-            <p>Playing At:</p>
-        </div>
-    </div>
-    <div class="row text-center bg-secondary py-3 rounded">
-        <div class="col ">Theater</div>
-        <div class="col ">ShowTime</div>
-    </div>
-    <div class="row">
-        <div class="col-sm"></div>
-        <div style="display:inline-flex; justify-content: space-around" class="col-sm">
-            <div onclick="getTheaterDetailToday()" style="cursor: pointer;" id="today-date">today</div>
-            <div onclick="getTheaterDetailTomorrow()" style="cursor: pointer;" id="tomorrow-date">tomorrow</div>
-        </div>
-    </div>
-
 </div>
 
-</div>
-    
-   <script src="/js/moviedetail.js"></script>
+<script src="/js/moviedetail.js"></script>

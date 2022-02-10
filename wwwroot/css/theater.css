@@ -1,7 +1,17 @@
-﻿.container {
-    font-family: 'Poppins', sans-serif;
-}
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
+.container {
+    font-family: 'Poppins', sans-serif;
+    background-color: #289CFF;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: white;
+}
+span{
+    color: white
+}
 a {
     text-decoration: none;
 }
@@ -28,9 +38,22 @@ a {
     flex-wrap: wrap;
     margin-bottom: 100px;
 }
-
+#theaterList {
+    margin: 0px;
+    padding: 0px;
+}
+.Theater-Type {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 .titleTheaterList {
-    margin-top: 40px;
-    margin-left: 35px;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
+}
+.btn-light {
+    background-color: #77c0ff;
+    border: none;
+    color: white;
+}
+.list-group-item{
+    background-color: #77c0ff;
 }

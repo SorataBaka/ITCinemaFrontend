@@ -1,6 +1,6 @@
 var globalScheduleID;
 var totalSeats;
-const retrieveSchedule = async (scheduleid) => {
+const retrieveSchedule = async (scheduleid, price) => {
   //Remember to remove the movieID in production
   const moviequery = await fetch(`https://api.itcinema.xyz/theaterschedule/getschedules?limit=10&scheduleID=${scheduleid}`, {
     method: "GET"
@@ -15,7 +15,6 @@ const retrieveSchedule = async (scheduleid) => {
   }
   const movieData = moviejson.Data[0]
   const movieID = movieData.MovieID
-  console.log(movieID)
   globalMovieID = movieID
   const moviedetailquery = await fetch(`https://api.itcinema.xyz/movie/getmovies?limit=10&movieID=${movieID}`, {
     method: "GET",
@@ -36,7 +35,7 @@ const retrieveSchedule = async (scheduleid) => {
   const movie = moviedetail.Data[0]
 
   document.querySelector("#Title").value = movie.MovieTitle
-  document.querySelector("#Description").value = movie.MovieDescription
+  document.querySelector("#Price").value = price
   document.querySelector("#Director").value = movie.MovieDirector
   document.querySelector("#Duration").value = `${movie.MovieDuration} minutes`
   document.querySelector(".Movie-Details-Image").style.backgroundImage = `url(${movie.PosterURL})`
@@ -59,7 +58,6 @@ const loadSeats = async() => {
   const windowurl = window.location.href
     const scheduleid = windowurl.split("?scheduleid=")[1]
     if(scheduleid === undefined) return window.location.replace("/")
-    retrieveSchedule(scheduleid)
   globalScheduleID = scheduleid 
   const seatQuery = await fetch(`https://itcinemabackend-production.up.railway.app/theaterschedule/getbookedseats?scheduleID=${scheduleid}`, {
     method: "GET"
@@ -70,6 +68,11 @@ const loadSeats = async() => {
     method: "GET"
   }).catch(err => {return alert("There seems to be a problem fetching items")})
   const priceJson = await priceQuery.json()
+
+  retrieveSchedule(scheduleid, priceJson.Data[0].Price)
+
+
+
   const price = priceJson.Data[0].Price
   const seatJson = await seatQuery.json()
   const seatsTotal = seatJson.Data.TotalSeats
@@ -133,7 +136,10 @@ window.onload = loadSeats
 
 const bookSeats = async() => {
    const token = window.sessionStorage.getItem("token")
-    if (!token) return window.location.replace("/")
+    if (!token){
+      alert("You must be logged in to book seats")
+      return window.location.replace("/login")
+    }
     if (globalScheduleID === undefined) return window.location.replace("/")
   var seatArray = []
   console.log(totalSeats)
@@ -161,6 +167,7 @@ const bookSeats = async() => {
     alert("There seems to be a problem with your purchase. Please make sure you have enough balance in your acount.")
 
   }else{
-    return window.location.reload();
+    alert("Purchase Successful. Please check your tickets in your dashboard.")
+    return window.location.replace("/")
   }
 }

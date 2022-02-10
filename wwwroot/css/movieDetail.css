@@ -1,11 +1,95 @@
-﻿#theaterMain {
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+.Main-Body{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+
+}
+.Main-Block {
+    background-color: #289CFF;
+    padding:  20px;
+    border-radius: 10px;
+    margin-bottom: 100px;
+    width: 80%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+#theaterMain {
     max-height: 500px;
     overflow-y: auto;
-    margin-bottom: 200px;
 }
-#mainContainer p {
-    color: black !important
+#movieIMG {
+    border-radius: 10px;
 }
 .theaterTimeA {
     width: 120px !important;
+    color: black
+}
+.Date {
+    background-color: antiquewhite;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+    margin-top: 15px;
+    width: 50%;
+    text-align: center;
+    color: white;
+    font-family: "poppins";
+}
+.Active-Date {
+    background-color: #0479ff;
+}
+.Non-Active-Date{
+    background-color: #55b0ff;
+}
+.col{
+    color: rgb(0, 0, 0);
+    font-family: "poppins";
+}
+.Movie-Description {
+    background-color: #77c0ff;
+    height: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    color: black
+}
+#movieDescription {
+    color: black
+}
+.Main-Schedule {
+    background-color: #77c0ff;
+    height: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0px;
+    margin-top: 20px;
+}
+.Playing-At {
+    margin-bottom: 10px;
+    font-size: 34px;
+    color: black;
+}
+.Table-Header-Group{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    background-color: #1985ff;
+    border-radius: 10px;
+    padding: 0px;
+    font-size: 24px;
+    font-family: "poppins";
+
+}
+.Table-Header {
+    display: inline-block;
+    width: 50%;
+}
+.theaterName {
+    color: black
 }

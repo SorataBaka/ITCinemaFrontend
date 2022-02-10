@@ -103,9 +103,22 @@ const final = async (theaterID) => {
 }
 
 const getTheaterDetailToday = async () => {
+    const todayDateButton = document.querySelector("#today-date");
+    todayDateButton.classList.add("Active-Date");
+    todayDateButton.classList.remove("Non-Active-Date")
+    const tomorrowDateButton = document.querySelector("#tomorrow-date");
+    tomorrowDateButton.classList.remove("Active-Date");
+    tomorrowDateButton.classList.add("Non-Active-Date")
     await getTheaterDetails(theaterID, todayDate);
 }
 const getTheaterDetailTomorrow = async () => {
+    const todayDateButton = document.querySelector("#today-date");
+    todayDateButton.classList.remove("Active-Date")
+    todayDateButton.classList.add("Non-Active-Date")
+
+    const tomorrowDateButton = document.querySelector("#tomorrow-date");
+    tomorrowDateButton.classList.remove("Non-Active-Date")
+    tomorrowDateButton.classList.add("Active-Date")
     await getTheaterDetails(theaterID, tomorrowDate);
 }
 

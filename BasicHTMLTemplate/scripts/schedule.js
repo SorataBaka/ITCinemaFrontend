@@ -219,6 +219,7 @@ const create = async () => {
       return window.location.replace("/movies")
     }
     const schedules = timeListFetchJson.Time
+    TimeList.innerHTML = ""
     for(const schedule of schedules){
       const time = document.createElement("div")
       time.classList.add("Time-Selection")
@@ -246,9 +247,6 @@ const create = async () => {
   ScheduleDiv.appendChild(ScheduleForm)
   ScheduleDiv.appendChild(TimeList)
 
-
-
-  TimeList.innerHTML = ""
   document.querySelector(".Schedule-Creation-Collumn").appendChild(ScheduleDiv)
 
 

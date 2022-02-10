@@ -143,6 +143,13 @@ const cleanUp = () => {
     return loadingTheaterRows;
 }
 const getTheaterDetailToday = async () => {
+    const todayDateButton = document.querySelector("#today-date");
+    todayDateButton.classList.add("Active-Date");
+    todayDateButton.classList.remove("Non-Active-Date")
+    const tomorrowDateButton = document.querySelector("#tomorrow-date");
+    tomorrowDateButton.classList.remove("Active-Date");
+    tomorrowDateButton.classList.add("Non-Active-Date")
+
     const loadingTheaterRows = cleanUp();
     let date = document.getElementById("today-date").innerHTML;
     const theatersData = await getTheater(movieID, date);
@@ -150,6 +157,15 @@ const getTheaterDetailToday = async () => {
     loadingTheaterRows.remove();
 }
 const getTheaterDetailTomorrow = async () => {
+    const todayDateButton = document.querySelector("#today-date");
+    todayDateButton.classList.remove("Active-Date")
+    todayDateButton.classList.add("Non-Active-Date")
+
+    const tomorrowDateButton = document.querySelector("#tomorrow-date");
+    tomorrowDateButton.classList.remove("Non-Active-Date")
+    tomorrowDateButton.classList.add("Active-Date")
+
+
     const loadingTheaterRows = cleanUp();
     let date = document.getElementById("tomorrow-date").innerHTML
     const theatersData = await getTheater(movieID, date);

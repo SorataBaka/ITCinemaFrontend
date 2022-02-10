@@ -8,17 +8,20 @@ ViewData["Title"] = "Login";
 <div class="Main-Body">
   <div class="text-center">
     <h5 class="display-4">Login</h5>
-    <div class="form-group" style="margin-bottom:10px">
-      <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email">
-    </div>
-    <div class="form-group" style="margin-bottom:10px">
-      <input type="password" class="form-control" id="InputPassword" placeholder="Password">
-    </div>
-      <div id="error-message" role="alert">
-    </div>
-    <button onclick="login()" type="submit" class="btn btn-primary">Login</button>
-    <div class="form-group" style="margin-bottom:10px; margin-top:15px;">
-      Don't have an account? <a style="width:150px" class="no-account" href="/register" >Register here !</a>
-    </div>
+    <form action="" onSubmit="return false">
+      <div class="form-group" style="margin-bottom:10px">
+        <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email">
+      </div>
+      <div class="form-group" style="margin-bottom:10px">
+        <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+      </div>
+        <div id="error-message" role="alert">
+      </div>
+      <input onclick="login()" type="submit" class="btn btn-primary" value="Login"/>
+      <div class="form-group" style="margin-bottom:10px; margin-top:15px;">
+        Don't have an account? <a style="width:150px" class="no-account" href="/register" >Register here !</a>
+      </div>
+    </form>
+
   </div>
 </div>

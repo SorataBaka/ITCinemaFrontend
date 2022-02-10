@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
 .Main-Body {
     display: flex;
     align-items: center;
@@ -142,7 +145,7 @@
   justify-content: center;
   align-items: center;
 }
-.btn-primary {
+.Action-Button {
   width: 200px;
   margin: 20px;
 }

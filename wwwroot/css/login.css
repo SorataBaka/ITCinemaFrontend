@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
 .Main-Body {
   display: flex;
   align-items: center;
@@ -5,9 +8,10 @@
   height: auto;
   flex-direction: column;
   width: 100vw;
-  height: 80vh;
+  height: 100%;
   text-align: center;
   margin-bottom: 100px;
+  padding: 20px;
 }
 .text-center {
   width: 30vw;

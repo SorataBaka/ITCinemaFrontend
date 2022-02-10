@@ -12,10 +12,10 @@ ViewData["Title"] = "Booking";
       <input type="text" class="form-control input" disabled id="Title">
       <h5 class="Movie-Details-Header">Director :</h5>
       <input type="text" class="form-control input" disabled id="Director">
-      <h5 class="Movie-Details-Header">Description :</h5>
-      <input type="text" class="form-control input" disabled id="Description">
       <h5 class="Movie-Details-Header">Duration :</h5>
       <input type="text" class="form-control input" disabled id="Duration">
+      <h5 class="Movie-Details-Header">Price per seat :</h5>
+      <input type="text" class="form-control input" disabled id="Price">
     </div>
   </div>
   <div class="Seat-Selection-List">
@@ -32,10 +32,10 @@ ViewData["Title"] = "Booking";
     <!-- Create a white vertical line-->
     <div class="Vertical-Line"></div>
     <div class="Button-Divisor">
-      <button class="btn btn-primary" id="reset-seat" onclick="window.location.reload()">
+      <button class="btn btn-primary Action-Button" id="reset-seat" onclick="window.location.reload()">
         <span>Reset Seats</span>
       </button>
-      <button class="btn btn-primary" onclick="bookSeats()">
+      <button class="btn btn-primary Action-Button" onclick="bookSeats()">
         <span>Book Seats</span>
       </button>
     </div>

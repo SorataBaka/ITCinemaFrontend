@@ -1,4 +1,7 @@
-﻿.Main-Body {
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.Main-Body {
     position: relative;
     display: flex;
     align-items: center;
