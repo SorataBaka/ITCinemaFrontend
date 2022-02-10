@@ -113,10 +113,10 @@ const loadSeats = async() => {
         seat.addEventListener("click", (e) => {
           seatEventListener(seat, price)
         })
-        const seatNumber = document.createElement("span")
-        seatNumber.classList.add("Seat-Number")
-        seatNumber.innerHTML = seatIndexing++
-        seat.appendChild(seatNumber)
+        // const seatNumber = document.createElement("span")
+        // seatNumber.classList.add("Seat-Number")
+        // seatNumber.innerHTML = seatIndexing++
+        // seat.appendChild(seatNumber)
         row.appendChild(seat)
       }
     }
@@ -142,7 +142,6 @@ const bookSeats = async() => {
     }
     if (globalScheduleID === undefined) return window.location.replace("/")
   var seatArray = []
-  console.log(totalSeats)
   for(var i = 1; i <= totalSeats; i++){
     const seat = document.getElementById(i)
     console.log(seat)
@@ -162,7 +161,6 @@ const bookSeats = async() => {
     body: requestBody
   })
   const buySeatsjson = await buySeats.json()
-  console.log(JSON.stringify(buySeatsjson))
   if(buySeatsjson.ResultCode !== 200){
     alert("There seems to be a problem with your purchase. Please make sure you have enough balance in your acount.")
 

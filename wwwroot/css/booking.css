@@ -1,6 +1,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-
+*{
+  font-family: "poppins";
+}
 .Main-Body {
     display: flex;
     align-items: center;
@@ -103,10 +105,10 @@
   cursor: pointer;
 }
 .Selected-Seat {
-  background-color: #b9ff8a;
+  background-color: #f3ff83;
 }
 .Booked-Seat {
-  background-color: #FF3232;
+  background-color: #ff7e7e;
 }
 .Booked-Seat:hover {
   /* zoom */
@@ -123,12 +125,18 @@
 .Movie-Screen{
   width: 100%;
   height: 40px;
-  background-color: #ACACAC;
-  display: block;
+  background-color: #c0c0c0;
+  display: flex;
   size: 20px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .Movie-Screen-Text {
   text-align: center;
+  margin-top: 1px;
 }
 
 .Booking-Box {
