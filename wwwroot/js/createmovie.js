@@ -68,13 +68,9 @@ const sendData = async() => {
 
     XHR.open("POST", "https://api.itcinema.xyz/admin/createmovies");
     XHR.setRequestHeader("Authorization", `Bearer ${token}`);
-    XHR.send(FD).then(() => {
-        alert("Data Sent!");
-        return window.location.replace("/movies");
-    }).catch(err => {
-        alert("Failed to send")
-        return 
-    })
+    XHR.send(FD)
+    alert("Data Sent!");
+    return window.location.replace("/movies");
 }
 
 const form = document.getElementById("MovieForm");
