@@ -34,8 +34,22 @@ const gettoday = () => {
   document.querySelector("#Month").value = ("0"+month).split(-2)
   document.querySelector("#Year").value = year
 }
+const reset = () => {
+  return window.location.reload()
+}
+
+const submit = () => {
+  const token = window.localStorage.getItem("token")
+  if(!token) return window.location.replace("/login")
+  
+}
+
 var index = 0;
 const create = async () => {
+  document.querySelector("#Day").disabled = true
+  document.querySelector("#Month").disabled = true
+  document.querySelector("#Year").disabled = true
+
   const token = window.localStorage.getItem("token") || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiZGZjOGYxMTMtNjk3MC00Y2M2LWJjMWMtNmQ5Zjc4OTc0ZDIwIiwicm9sZSI6IjAiLCJuYmYiOjE2NDQzOTUzNTMsImV4cCI6MTY0NDQzODU1MywiaWF0IjoxNjQ0Mzk1MzUzLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYxOTU1IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0MjAwIn0.-k6IQQn_xKuylMZWmC9ra-i93d7_MY0n4Z0WXjygJSI"
   if (!token) {
     alert("You are not authorized to use this page.")
@@ -79,9 +93,7 @@ const create = async () => {
   TheatresList.id = "Theatres"
   TheatresList.classList.add("form-control")
   TheatresList.classList.add("schedule-control")
-  TheatresList.onchange = () => {
-    console.log(ScheduleDiv.id)
-  }
+
 
   const PickATheatre = document.createElement("option")
   PickATheatre.value = ""
@@ -103,6 +115,16 @@ const create = async () => {
   DeleteButton.onclick = () => {
     ScheduleDiv.remove()
   }
+  TheatresList.onchange = () => {
+    console.log(ScheduleDiv.id)
+    //On change, refresh the contents of the theatres
+    //Fetch schedules from the api
+    //If not permitted, then redirect to login page
+    
+
+
+  }
+  
 
   ScheduleForm.appendChild(PriceInput)
   ScheduleForm.appendChild(TheatresList)
@@ -111,8 +133,14 @@ const create = async () => {
 
   const TimeList = document.createElement("div")
   TimeList.classList.add("Available-Time-List")
+  //Fetch the api for available schedules
+  //Then create a div with class Time-Selection
+  //Create an input with type checkbox, name Time, id of the time, class form-check-input
+  //Create a label with for Time, class form-check-label
+  //Set the inner html of label with the parsed time
+  //Append the label to the div
+  //Append the div to the ScheduleDiv
   
-
 
 
 
