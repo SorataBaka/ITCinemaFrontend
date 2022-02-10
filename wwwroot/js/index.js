@@ -26,7 +26,7 @@ const GetNowPlaying = async() => {
   for(const movie of nowPlaying){
     const newChild = document.createElement("a")
     newChild.classList.add("MovieBox")
-    newChild.href = `/movie/${movie.MovieID}`
+    newChild.href = `/movies/moviedetails?id=${movie.MovieID}`
     newChild.style.backgroundImage = `url(${movie.PosterURL})`
     movieList.appendChild(newChild)
   }

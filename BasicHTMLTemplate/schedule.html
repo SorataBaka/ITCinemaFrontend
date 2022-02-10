@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/schedule.css">
+  <script src="./scripts/schedule.js"></script>
+</head>
+<body>
+  <div class="Main-Body">
+    <div class="Movie-Details">
+      <div class="Movie-Details-Image"></div>
+      <div class="Movie-Details-Text">
+        <h5 class="Movie-Details-Header">Title :</h5>
+        <input type="text" class="form-control input" disabled id="Title">
+        <h5 class="Movie-Details-Header">Director :</h5>
+        <input type="text" class="form-control input" disabled id="Director">
+        <h5 class="Movie-Details-Header">Description :</h5>
+        <input type="text" class="form-control input" disabled id="Description">
+        <h5 class="Movie-Details-Header">Duration :</h5>
+        <input type="text" class="form-control input" disabled id="Duration">
+      </div>
+    </div>
+    <div class="Schedule-Creation">
+      <div class="Button-Divisor">
+        <input type="number" name="Day"class="form-control date-control" placeholder="Day" id="Day">
+        <input type="number" name="Month" class="form-control date-control" placeholder="Month" id="Month">
+        <input type="number" name="Year" class="form-control date-control" placeholder="Year" id="Year">
+        <button class="btn btn-primary buttons" onclick="gettoday()">Today</button>
+        <button class="btn btn-primary buttons" onclick="create()">Create</button>
+        <button class="btn btn-danger buttons" onclick="reset()">Reset</button>
+        <button class="btn btn-danger buttons" onclick="submit()">Submit</button>
+      </div>
+      <div class="Alert" id="DateInputAlert">
+        <p class="Alert-Message">Please provide a date.</p>
+      </div>
+      <div class="Alert" id="TheatreFetchAlert">
+        <p class="Alert-Message">Failed to fetch theatres. Please reload the page or try again later.</p>
+      </div>
+      <div class="Alert" id="TheatreSelectAlert">
+        <p class="Alert-Message">Please make sure you select a theatre and a price for every schedule.</p>
+      </div>
+      <div class="Alert" id="TimeSelectAlert">
+        <p class="Alert-Message">Please make sure you select a time for every created schedule.</p>
+      </div>
+      <div class="Schedule-Creation-Collumn">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,5 +1,47 @@
 var globalScheduleID;
 var totalSeats;
+const retrieveSchedule = async (scheduleid) => {
+  //Remember to remove the movieID in production
+  const moviequery = await fetch(`https://api.itcinema.xyz/theaterschedule/getschedules?limit=10&scheduleID=${scheduleid}`, {
+    method: "GET"
+  }).catch(err => {
+    alert("There seems to be a problem fetching items")
+    return window.location.replace("/movies")
+  })
+  const moviejson = await moviequery.json()
+  if(moviejson.Data.length == 0){
+    alert("Schedule not found")
+    return window.location.replace("/movies")
+  }
+  const movieData = moviejson.Data[0]
+  const movieID = movieData.MovieID
+  console.log(movieID)
+  globalMovieID = movieID
+  const moviedetailquery = await fetch(`https://api.itcinema.xyz/movie/getmovies?limit=10&movieID=${movieID}`, {
+    method: "GET",
+  }).catch(err => {
+    return alert("Failed to fetch movie query. Please try again later.")
+  })
+
+
+  const moviedetail = await moviedetailquery.json()
+  if(moviedetail.ResultCode !== 200){
+    alert("Movie ID not found. Redirecting to homepage.")
+    return window.location.replace("/")
+  }
+  if(moviedetail.Data.length === 0) {
+    alert("Movie ID not found. Redirecting.")
+    return window.location.replace("/movies")
+  }
+  const movie = moviedetail.Data[0]
+
+  document.querySelector("#Title").value = movie.MovieTitle
+  document.querySelector("#Description").value = movie.MovieDescription
+  document.querySelector("#Director").value = movie.MovieDirector
+  document.querySelector("#Duration").value = `${movie.MovieDuration} minutes`
+  document.querySelector(".Movie-Details-Image").style.backgroundImage = `url(${movie.PosterURL})`
+
+}
 const seatEventListener = (seat, price) => {
   if(seat.classList.contains("Selected-Seat")){
     seat.classList.remove("Selected-Seat")
@@ -17,6 +59,7 @@ const loadSeats = async() => {
   const windowurl = window.location.href
     const scheduleid = windowurl.split("?scheduleid=")[1]
     if(scheduleid === undefined) return window.location.replace("/")
+    retrieveSchedule(scheduleid)
   globalScheduleID = scheduleid 
   const seatQuery = await fetch(`https://itcinemabackend-production.up.railway.app/theaterschedule/getbookedseats?scheduleID=${scheduleid}`, {
     method: "GET"
@@ -113,7 +156,11 @@ const bookSeats = async() => {
     body: requestBody
   })
   const buySeatsjson = await buySeats.json()
-  if(buySeatsjson.ErrorMessage === "Success"){
-    window.location.replace("/")
+  console.log(JSON.stringify(buySeatsjson))
+  if(buySeatsjson.ResultCode !== 200){
+    alert("There seems to be a problem with your purchase. Please make sure you have enough balance in your acount.")
+
+  }else{
+    return window.location.reload();
   }
 }

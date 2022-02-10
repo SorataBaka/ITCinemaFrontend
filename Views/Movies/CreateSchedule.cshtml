@@ -1,0 +1,43 @@
+
+<link rel="stylesheet" href="/css/schedule.css">
+<script src="/js/schedule.js"></script>
+<div class="Main-Body">
+    <div class="Movie-Details">
+      <div class="Movie-Details-Image"></div>
+      <div class="Movie-Details-Text">
+        <h5 class="Movie-Details-Header">Title :</h5>
+        <input type="text" class="form-control input" disabled id="Title">
+        <h5 class="Movie-Details-Header">Director :</h5>
+        <input type="text" class="form-control input" disabled id="Director">
+        <h5 class="Movie-Details-Header">Description :</h5>
+        <input type="text" class="form-control input" disabled id="Description">
+        <h5 class="Movie-Details-Header">Duration :</h5>
+        <input type="text" class="form-control input" disabled id="Duration">
+      </div>
+    </div>
+    <div class="Schedule-Creation">
+      <div class="Button-Divisor">
+        <input type="number" name="Day"class="form-control date-control" placeholder="Day" id="Day">
+        <input type="number" name="Month" class="form-control date-control" placeholder="Month" id="Month">
+        <input type="number" name="Year" class="form-control date-control" placeholder="Year" id="Year">
+        <button class="btn btn-primary buttons" onclick="gettoday()">Today</button>
+        <button class="btn btn-primary buttons" onclick="create()">Create</button>
+        <button class="btn btn-danger buttons" onclick="reset()">Reset</button>
+        <button class="btn btn-danger buttons" onclick="submit()">Submit</button>
+      </div>
+      <div class="Alert" id="DateInputAlert">
+        <p class="Alert-Message">Please provide a date.</p>
+      </div>
+      <div class="Alert" id="TheatreFetchAlert">
+        <p class="Alert-Message">Failed to fetch theatres. Please reload the page or try again later.</p>
+      </div>
+      <div class="Alert" id="TheatreSelectAlert">
+        <p class="Alert-Message">Please make sure you select a theatre and a price for every schedule.</p>
+      </div>
+      <div class="Alert" id="TimeSelectAlert">
+        <p class="Alert-Message">Please make sure you select a time for every created schedule.</p>
+      </div>
+      <div class="Schedule-Creation-Collumn">
+      </div>
+    </div>
+  </div>

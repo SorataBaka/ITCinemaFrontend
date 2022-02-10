@@ -22,8 +22,7 @@
   padding: 30px;
 }
 .Main-Carousel:hover {
-  /* blur */
-  filter: blur(2px);
+  background-blend-mode: darken;
 }
 .Main-Carousel-Title {
   font-family: 'Poppins', sans-serif;
@@ -105,7 +104,7 @@
 }
 .MovieBox:hover {
   transform: scale(1.1);
-  filter: blur(1px);
+  background-blend-mode: darken;
 }
 /* width */
 ::-webkit-scrollbar {

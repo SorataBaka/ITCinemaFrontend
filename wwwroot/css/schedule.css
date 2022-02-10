@@ -1,0 +1,171 @@
+.Main-Body {
+  width: 100%;
+  height: 100%;
+  /* set background color to white in production */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 100px;
+}
+.Movie-Details {
+  width: 80%;
+  height: 100%;
+  margin: 0;
+  padding: 20px;
+  background-color: #289CFF;
+  border-radius: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+.Movie-Details-Image {
+  width: 350px;
+  height: 400px;
+  background-image: url("https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  background-color: #6cbaff;
+  margin-right: 20px;
+}
+.Movie-Details-Text {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #6cbaff;
+  border-radius: 10px;
+  padding: 20px;
+  padding-top: 0;
+}
+.Movie-Details-Header {
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.form-control {
+  width: 100%;
+}
+
+.Button-Divisor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: #6cbaff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.date-control {
+  margin: 10px;
+}
+.buttons {
+  margin: 10px;
+}
+.Schedule-Creation { 
+  width: 80%;
+  height: 100%;
+  margin: 0px;
+  padding: 20px;
+  background-color: #289CFF;
+  border-radius: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Schedule-Creation-Collumn {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.Schedule {
+  width: 100%;
+  height: auto;
+  /* set background color to white in production */
+  background-color: #6cbaff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+.Schedule-Creation-Button:hover {
+  cursor: pointer;
+}
+
+.Schedule-Form{
+  background-color: #94cdff;
+  border-radius: 10px;
+  height: 100%;
+  width: 50%;
+  flex-direction: column;
+  padding: 10px;
+  padding-bottom: 0px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.delete-button {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.schedule-control {
+  margin-bottom: 10px;
+  height: 100%;
+  font-size: 18px;
+
+}
+.Available-Time-List {
+  background-color: #94cdff;
+  height: auto;
+  width: 50%;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+.Time-Selection{
+  display: inline-flex;
+  flex-direction: row;
+  background-color: #bde0ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px;
+  width: 40%;
+}
+.Alert {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #94cdff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  display: none;
+}
+.Alert-Message {
+  margin: 0px;
+  color: red;
+  text-align: center;
+}
+.form-check-label {
+  margin-left: 10px;
+  font-size: 15px;
+  width: 100%;
+}
