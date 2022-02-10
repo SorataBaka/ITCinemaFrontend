@@ -1,0 +1,95 @@
+﻿.createmovietitle{
+    margin-top:50px;
+}
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 100px 0;
+    padding-bottom: 100px;
+}
+
+form {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.formInput {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.formInput input,select {
+        padding: 0.2em;
+        font-size: 1.3rem;
+    }
+
+#create {
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    background-color: #289cff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5em 1em;
+    margin-left: 10px;
+    margin-top: 40px;
+}
+
+#create:hover {
+    background-color: #2183d8;
+}
+
+#genresContainer {
+    max-width: 70vw;
+    overflow-x: auto;
+    display: flex;
+}
+
+.genresOptions {
+    margin: 8px 0;
+}
+
+.statusContainer {
+    display: flex;
+}
+
+.statusOptions {
+    margin-right: 30px;
+}
+
+#img {
+    font-size: 1rem;
+}
+
+input[type="checkbox"]:not(:checked),
+input[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999%;
+}
+
+input[type="checkbox"] + label {
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"]:checked + label {
+    border: 1px solid white;
+    color: white;
+    background-color: black;
+}
+
+.genresButton {
+    text-align:center;
+    width:90px;
+    margin: 0 6px;
+    border-radius: 10px;
+    overflow:auto;
+}

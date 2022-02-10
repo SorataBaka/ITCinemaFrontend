@@ -160,7 +160,83 @@
         }
 
     }
+    const showCreateMovieBtn = async () => {
+        const token = window.sessionStorage.getItem("token");
+        if (token) {
+            
+          const response = await fetch(
+            "https://itcinemabackend-production.up.railway.app/user/getuser",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const data = await response.json();
+          const userData = data.Data[0];
+          if (userData.Role === 0) {
+            const createMovieBtn = document.createElement("p");
+            createMovieBtn.id = "createMovieBtn";
+            createMovieBtn.innerHTML = "Create Movies";
+            createMovieBtn.setAttribute("onclick", "navigateCreateMovie()");
+            createMovieBtn.style.cursor = "pointer";
+            createMovieBtn.style.backgroundColor = "#289CFF";
+            createMovieBtn.style.margin = "30px 15px 10px 0";
+            createMovieBtn.style.padding = "0.5em 1em";
+            createMovieBtn.style.borderRadius = "10px";
+            createMovieBtn.onmouseover = ()=>{
+                createMovieBtn.style.backgroundColor = "#1e79c7";
+            }
+            createMovieBtn.onmouseleave = ()=>{
+                createMovieBtn.style.backgroundColor = "#289CFF";
+            }
+            const movieFirstTitle = document.getElementById("movieFirstTitle");
+            movieFirstTitle.style.display="flex";
+            movieFirstTitle.style.alignContent="center";
+            movieFirstTitle.style.justifyContent="space-between";
+            movieFirstTitle.appendChild(createMovieBtn);
+          } else {
+            const createMovieBtn = document.getElementById("createMovieBtn");
+            if(createMovieBtn){
+                createMovieBtn.remove();
+            }
+          }
+        }
+        else{
+            const createMovieBtn = document.getElementById("createMovieBtn");
+            if(createMovieBtn){
+                createMovieBtn.remove();
+            }
+        }
+      };
 
+    const navigateCreateMovie = async () => {
+        const token = window.sessionStorage.getItem("token");
+        if (token) {
+          const response = await fetch(
+            "https://itcinemabackend-production.up.railway.app/user/getuser",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const data = await response.json();
+          const userData = data.Data[0];
+          if (userData.Role === 0) {
+            window.location.replace("/movies/createmovie");
+          } else {
+            window.location.replace("/");
+          }
+        } else {
+          window.location.replace("/");
+        }
+      };
+    
+   
+    showCreateMovieBtn();
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
