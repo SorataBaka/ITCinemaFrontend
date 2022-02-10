@@ -57,6 +57,8 @@ const sendData = () => {
     XHR.open("POST", "https://itcinemabackend-production.up.railway.app/admin/createmovies");
     XHR.setRequestHeader("Authorization", `Bearer ${token}`);
     XHR.send(FD);
+    alert("Data Sent!");
+    window.location.replace(`/`);
 }
 
 const form = document.getElementById("MovieForm");
