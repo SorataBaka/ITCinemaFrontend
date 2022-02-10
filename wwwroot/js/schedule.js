@@ -1,15 +1,17 @@
 var globalMovieID;
 const retrieveSchedule = async () => {
   //Remember to remove the movieID in production
-  const movieID = window.location.href.split("?movieid=")[1] || "6290555e-24a4-4c15-a121-4d15a5e51701"
+    const movieID = window.location.href.split("?movieid=")[1]
+    if (movieID === undefined) {
+        alert("Movie ID Required")
+        window.location.replace("/movies")
+    }
   globalMovieID = movieID
   const moviedetailquery = await fetch(`https://api.itcinema.xyz/movie/getmovies?limit=10&movieID=${movieID}`, {
     method: "GET",
   }).catch(err => {
     return alert("Failed to fetch movie query. Please try again later.")
   })
-
-
   const moviedetail = await moviedetailquery.json()
   if(moviedetail.ResultCode !== 200){
     alert("Movie ID not found. Redirecting to homepage.")
@@ -43,7 +45,7 @@ const reset = () => {
 }
 
 const submit = async() => {
-  const token = window.localStorage.getItem("token") || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiMWQ5NzJhOGItNGIyZC00OTVkLWFlODctMGQyYTI4OGMzNDc4Iiwicm9sZSI6IjAiLCJuYmYiOjE2NDQ0Njg1MjksImV4cCI6MTY0NDUxMTcyOSwiaWF0IjoxNjQ0NDY4NTI5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYxOTU1IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0MjAwIn0.UcsoVbIqb1PmX6IWgjFjsPko8YsKdyQ28UY6IPLUrNA"
+  const token = window.sessionStorage.getItem("token")
   if(!token) return window.location.replace("/login")
   
   var listOfTheatreTimes = []
@@ -83,7 +85,6 @@ const submit = async() => {
     MovieID: globalMovieID,
     Playings: listOfTheatreTimes
   })
-  console.log(JSON.stringify(requestBody))
   const request = await fetch(`https://api.itcinema.xyz/admin/createschedules`, {
     method: "POST",
     headers: {
@@ -108,7 +109,7 @@ const submit = async() => {
 var index = 0;
 const create = async () => {
 
-  const token = window.localStorage.getItem("token") || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmltYXJ5c2lkIjoiMWQ5NzJhOGItNGIyZC00OTVkLWFlODctMGQyYTI4OGMzNDc4Iiwicm9sZSI6IjAiLCJuYmYiOjE2NDQ0Njg1MjksImV4cCI6MTY0NDUxMTcyOSwiaWF0IjoxNjQ0NDY4NTI5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYxOTU1IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0MjAwIn0.UcsoVbIqb1PmX6IWgjFjsPko8YsKdyQ28UY6IPLUrNA"
+  const token = window.sessionStorage.getItem("token")
   if (!token) {
     alert("You are not authorized to use this page.")
     window.location.replace("/")
@@ -195,7 +196,8 @@ const create = async () => {
 
     //Refresh the contents of TimeList div
     const theatreID = TheatresList.value
-    if(theatreID === "" ) {
+      if (theatreID === "") {
+          TimeList.innerHTML = "Please select a theatre"
       return document.querySelector("#TheatreSelectAlert").style.display = "block"
     }else{
       document.querySelector("#TheatreSelectAlert").style.display = "none"
@@ -218,7 +220,10 @@ const create = async () => {
       alert("Failed to fetch schedules.")
       return window.location.replace("/movies")
     }
-    const schedules = timeListFetchJson.Time
+      const schedules = timeListFetchJson.Time
+      if (schedules.length == 0) {
+          return TimeList.innerHTML = "No Available Schedule"
+      }
     for(const schedule of schedules){
       const time = document.createElement("div")
       time.classList.add("Time-Selection")
@@ -234,8 +239,8 @@ const create = async () => {
       label.innerHTML = schedule.split("T")[1].slice(0, 5)
 
       time.appendChild(input)
-      time.appendChild(label)
-
+        time.appendChild(label)
+        TimeList.innerHTML = ""
       TimeList.appendChild(time)
     }
   }
@@ -246,9 +251,6 @@ const create = async () => {
   ScheduleDiv.appendChild(ScheduleForm)
   ScheduleDiv.appendChild(TimeList)
 
-
-
-  TimeList.innerHTML = ""
   document.querySelector(".Schedule-Creation-Collumn").appendChild(ScheduleDiv)
 
 

@@ -34,7 +34,9 @@
         }
           getMovie(role);
     }
-
+    const createschedule = (id) => {
+        return window.location.replace(`/movies/CreateSchedule?movieid=${id}`)
+    }
 
     const getMovie = async(role)=>{
         if(role==0){
@@ -54,7 +56,7 @@
                             </div>
                         </a>
                         <div id="card-actions" class="card-actions">
-                            <button type="button" class="btn btn-warning"><img style="width: 40px;height: 40px;"  src="/assets/schedule_icon.png" alt="del-icon"></button>
+                            <button type="button" class="btn btn-warning" onclick="createschedule('${movieData.MovieID}')"><img style="width: 40px;height: 40px;"  src="/assets/schedule_icon.png" alt="del-icon"></button>
                             <button type="button" onclick="deleteMovie('${movieData.MovieID}')" class="btn btn-danger"><img style="width: 20px;height: 20px;" src="/assets/delete_icon.png" alt="del-icon"></button>
                         </div>
                     </div>
