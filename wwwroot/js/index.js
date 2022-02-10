@@ -2,7 +2,7 @@ const changeBackground = (nowPlaying) => {
   const carousel = document.getElementById("Main-Carousel")
   const randomPick = Math.floor(Math.random() * nowPlaying.length)
   carousel.style.backgroundImage = `url(${nowPlaying[randomPick].PosterURL})`
-  carousel.href = `/movie/${nowPlaying[randomPick].MovieID}`
+    carousel.href = `/movies/moviedetails?id=${nowPlaying[randomPick].MovieID}`
   document.querySelector('.Main-Carousel-Title').innerHTML = nowPlaying[randomPick].MovieTitle
   document.querySelector('.Main-Carousel-Description').innerHTML = nowPlaying[randomPick].MovieDescription
   document.querySelector('.Main-Carousel-Author').innerHTML = nowPlaying[randomPick].MovieDirector
