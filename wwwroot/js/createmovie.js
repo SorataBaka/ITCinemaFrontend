@@ -73,8 +73,9 @@ const sendData = async() => {
         return window.location.replace("/movies");
     }).catch(err => {
         alert("Failed to send")
-        return
+        return 
     })
+}
 
 const form = document.getElementById("MovieForm");
 form.addEventListener("submit", (e) => {

@@ -132,7 +132,6 @@ const cleanUp = () => {
     const TheaterRows = document.getElementsByClassName("theaterRow");
     const length = TheaterRows.length;
     for (let i = 0; i < length; i++) {
-        console.log(TheaterRows[i], length);
         TheaterRows[0].remove();
     }
     const TheaterMainContainer = document.getElementById("theaterMain");

@@ -9,10 +9,6 @@ const topup = async () => {
         Amount: parseInt(amount)
     })
 
-    console.log(email);
-    console.log(amount);
-    console.log(requestBody);
-
     if (!parseInt(amount)) {
         messageElem.style.opacity = "100%";
         messageElem.innerHTML = "Invalid input";
@@ -38,6 +34,4 @@ const topup = async () => {
         messageElem.innerHTML = res.ErrorMessage;
         messageElem.style.color = "var(--bs-danger)";
     }
-
-    console.log(res);
 }

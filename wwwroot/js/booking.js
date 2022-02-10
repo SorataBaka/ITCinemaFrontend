@@ -144,7 +144,6 @@ const bookSeats = async() => {
   var seatArray = []
   for(var i = 1; i <= totalSeats; i++){
     const seat = document.getElementById(i)
-    console.log(seat)
     if(seat!==undefined && seat.classList.contains("Selected-Seat")) seatArray.push(i)
   }
   if(seatArray.length === 0) return alert("Please select at least one seat")
