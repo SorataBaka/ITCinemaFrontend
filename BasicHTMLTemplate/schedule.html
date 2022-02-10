@@ -29,33 +29,70 @@
         <input type="number" name="Day"class="form-control date-control" placeholder="Day" id="Day">
         <input type="number" name="Month" class="form-control date-control" placeholder="Month" id="Month">
         <input type="number" name="Year" class="form-control date-control" placeholder="Year" id="Year">
-        <button class="btn btn-primary" onclick="gettoday()" style="margin-right: 0px; margin-left: 0px;">Today</button>
-        <button class="btn btn-primary" onclick="create()">Create</button>
+        <button class="btn btn-primary buttons" onclick="gettoday()">Today</button>
+        <button class="btn btn-primary buttons" onclick="create()">Create</button>
+        <button class="btn btn-danger buttons" onclick="submit()">Submit</button>
+      </div>
+      <div class="Alert">
+        <p class="Alert-Message">Failed to fetch theatres. Please reload the page or try again later.</p>
       </div>
       <div class="Schedule-Creation-Collumn">
-        <!-- <div class="Schedule">
+        <div class="Schedule">
           
           <div class="Schedule-Form">
-
             <input type="number" name="Price" class="form-control schedule-control" id="Price" placeholder="Price">
-
             <select name="Theatres" id="Theatres" class="form-control schedule-control">
               <option value="">Pick a theatre</option>
             </select>
-
             <button class="btn btn-danger delete-button">Delete</button>
-
           </div>
-
           <div class="Available-Time-List">
-            <div class="Time">
-              <span>12.06</span>
+            <div class="Time-Selection">
+              <input type="checkbox" name="Time" id="12:30" class="form-check-input">
+              <label for="12:30" class="form-check-label">12:30</label>
             </div>
-            <div class="Time">
-              <span>14.06</span>
+            <div class="Time-Selection">
+              <input type="checkbox" name="Time" id="12:30" class="form-check-input">
+              <label for="12:30" class="form-check-label">12:30</label>
+            </div>
+            <div class="Time-Selection">
+              <input type="checkbox" name="Time" id="12:30" class="form-check-input">
+              <label for="12:30" class="form-check-label">12:30</label>
+            </div>
+            <div class="Time-Selection">
+              <input type="checkbox" name="Time" id="12:30" class="form-check-input">
+              <label for="12:30" class="form-check-label">12:30</label>
+            </div>
+            <div class="Time-Selection">
+              <input type="checkbox" name="Time" id="12:30" class="form-check-input">
+              <label for="12:30" class="form-check-label">12:30</label>
+            </div>
+            <div class="Time-Selection">
+              <input type="checkbox" name="Time" id="12:30" class="form-check-input">
+              <label for="12:30" class="form-check-label">12:30</label>
+            </div>
+            <div class="Time-Selection">
+              <input type="checkbox" name="Time" id="12:30" class="form-check-input">
+              <label for="12:30" class="form-check-label">12:30</label>
+            </div>
+            <div class="Time-Selection">
+              <input type="checkbox" name="Time" id="12:30" class="form-check-input">
+              <label for="12:30" class="form-check-label">12:30</label>
+            </div>
+            <div class="Time-Selection">
+              <input type="checkbox" name="Time" id="12:30" class="form-check-input">
+              <label for="12:30" class="form-check-label">12:30</label>
+            </div>
+            <div class="Time-Selection">
+              <input type="checkbox" name="Time" id="12:30" class="form-check-input">
+              <label for="12:30" class="form-check-label">12:30</label>
+            </div>
+            <div class="Time-Selection">
+              <input type="checkbox" name="Time" id="12:30" class="form-check-input">
+              <label for="12:30" class="form-check-label">12:30</label>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
