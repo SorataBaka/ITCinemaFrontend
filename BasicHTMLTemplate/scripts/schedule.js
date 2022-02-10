@@ -30,8 +30,8 @@ const gettoday = () => {
   const month = today.getMonth() + 1;
   const year = today.getFullYear();
 
-  document.querySelector("#Day").value = ("0"+day).split(-2)
-  document.querySelector("#Month").value = ("0"+month).split(-2)
+  document.querySelector("#Day").value = ("0" + day).split(-2)
+  document.querySelector("#Month").value = ("0" + month).split(-2)
   document.querySelector("#Year").value = year
 }
 const reset = () => {
@@ -42,6 +42,53 @@ const submit = () => {
   const token = window.localStorage.getItem("token")
   if(!token) return window.location.replace("/login")
   
+  var listOfTheatreTimes = []
+  //Process query here
+  const ScheduleList = document.getElementsByClassName("Schedule")
+  for(const Schedule of ScheduleList){
+    const Price = Schedule.querySelector(".Schedule-Form>#Price").value
+    if(Price.length === 0 || parseInt(Price) <= 0) return document.querySelector("#TheatreSelectAlert").style.display = "block"
+    const TheatreID = Schedule.querySelector(".Schedule-Form>#Theatres").value
+    if(TheatreID.length === 0)  return document.querySelector("#TheatreSelectAlert").style.display = "block"
+    
+    //parse picked time here
+    var listOfTime = []
+    const listoftimedivs = Schedule.getElementsByClassName("Time-Selection")
+    for(const time of listoftimedivs){
+      const timeString = time.querySelector(".form-check-input").id
+      listOfTime.push(timeString)
+    }
+    if(listOfTime.length === 0 ) return document.querySelector("#TimeSelectAlert").style.display = "block"
+
+    //Insert to listOfTheatreTimes
+    const newSchedule = {
+      Price: Price,
+      TheaterID: TheatreID,
+      PlayingAt: listOfTime
+    }
+    listOfTheatreTimes.push(newSchedule)
+  }
+
+  const requestBody = JSON.stringify({
+    MovieID: globalMovieID,
+    Playings: listOfTheatreTimes
+  })
+  console.log(JSON.stringify(requestBody))
+  // const request = await fetch(``, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     "Authorization": `Bearer ${token}`
+  //   },
+  //   body: requestBody
+  // })
+  // const response = await request.json()
+  // if(response.ResultCode !== 200){
+  //   alert("Failed to submit schedule. Please try again later.")
+  //   return
+  // }
+  // alert("Successfully added new schedule.")
+  // return window.location.replace("/movies")
 }
 
 var index = 0;
@@ -71,7 +118,7 @@ const create = async () => {
   const theatreQueryJson = await theatreQuery.json()
   const theatres = theatreQueryJson.Data
   if(theatreQueryJson.ResultCode !== 200){
-    return document.querySelector(".Alert").style.display = "block"
+    return document.querySelector("#TheatreFetchAlert").style.display = "block"
   }
   const ScheduleDiv = document.createElement("div")
   ScheduleDiv.classList.add("Schedule")
@@ -115,39 +162,73 @@ const create = async () => {
   DeleteButton.onclick = () => {
     ScheduleDiv.remove()
   }
-  TheatresList.onchange = () => {
-    console.log(ScheduleDiv.id)
+
+  const TimeList = document.createElement("div")
+  TimeList.classList.add("Available-Time-List")
+  TimeList.innerHTML = "Please select a theatre"
+
+  TheatresList.onchange = async() => {
     //On change, refresh the contents of the theatres
     //Fetch schedules from the api
     //If not permitted, then redirect to login page
-    
+    //Fetch here
 
+    //Refresh the contents of TimeList div
+    TimeList.innerHTML = ""
+    const theatreID = TheatresList.value
+    if(theatreID === "" ) {
+      return document.querySelector("#TheatreSelectAlert").style.display = "block"
+    }else{
+      document.querySelector("#TheatreSelectAlert").style.display = "none"
+    }
+    const timeListFetch = await fetch(``, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        "MovieID": globalMovieID,
+        "TheaterID": theatreID,
+        "Date": `${date}T00:00:00.000Z`
+      })
+    })
+    const timeListFetchJson = await timeListFetch.json()
+    if(timeListFetchJson.ResultCode !== 200){
+      alert("Failed to fetch schedules.")
+      return
+    }
+    const schedules = timeListFetchJson.Time
+    for(const schedule of schedules){
+      const time = document.createElement("div")
+      time.classList.add("Time-Selection")
+      // time.innerHTML = schedule.split("T")[1]
+      const input = document.createElement("input")
+      input.type = "checkbox"
+      input.name = "Time"
+      input.id = schedule
+      input.classList.add("form-check-input")
 
+      const label = document.createElement("label")
+      label.classList.add("form-check-label")
+      label.for = schedule
+      label.innerHTML = schedule.split("T")[1]
+
+      time.appendChild(input)
+      time.appendChild(label)
+
+      TimeList.appendChild(time)
+    }
   }
-  
 
   ScheduleForm.appendChild(PriceInput)
   ScheduleForm.appendChild(TheatresList)
   ScheduleForm.appendChild(DeleteButton)
   ScheduleDiv.appendChild(ScheduleForm)
-
-  const TimeList = document.createElement("div")
-  TimeList.classList.add("Available-Time-List")
-  //Fetch the api for available schedules
-  //Then create a div with class Time-Selection
-  //Create an input with type checkbox, name Time, id of the time, class form-check-input
-  //Create a label with for Time, class form-check-label
-  //Set the inner html of label with the parsed time
-  //Append the label to the div
-  //Append the div to the ScheduleDiv
-  
+  ScheduleDiv.appendChild(TimeList)
 
 
 
-
-
-
-  
   document.querySelector(".Schedule-Creation-Collumn").appendChild(ScheduleDiv)
 
 
