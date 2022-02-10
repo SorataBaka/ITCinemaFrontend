@@ -18,7 +18,8 @@
 #createMovieBtn {
     cursor: pointer;
     background-color: #289CFF;
-    margin: 30px 15px 10px 0;
+    margin-left: 20px;
+    margin-right: 20px;
     padding: 0.5em 1em;
     border-radius: 10px;
 }

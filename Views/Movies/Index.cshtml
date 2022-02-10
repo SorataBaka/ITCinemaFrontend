@@ -5,7 +5,9 @@
 
 <div class="container">
     <div class="NowPlayingDiv">
-        <h3 class="titleNowPlaying">Now Playing</h3>
+        <div id="movieFirstTitle" style="display:flex; justify-content:center; align-items:center">
+            <h3 class="titleNowPlaying">Now Playing</h3>
+        </div>
         <div id="movieListNowPlaying"></div>  
     </div>
     <div class="ComingSoonDiv">
@@ -182,7 +184,7 @@
             createMovieBtn.setAttribute("onclick", "navigateCreateMovie()");
             createMovieBtn.style.backgroundColor = "#FFC107";
             createMovieBtn.style.cursor = "pointer";
-            createMovieBtn.style.margin = "30px 15px 10px 0";
+            createMovieBtn.style.margin = "0 20px 0.5rem 20px";
             createMovieBtn.style.padding = "0.5em 1em";
             createMovieBtn.style.borderRadius = "10px";
             createMovieBtn.onmouseover = ()=>{
