@@ -13,7 +13,7 @@ const HandleCarousel = async(nowPlaying) => {
   }, 5000)
 }
 const GetNowPlaying = async() => {
-  const nowPlayingQuery = await fetch("https://itcinemabackend-production.up.railway.app/movie/getmovies?limit=10&sort=1&movieStatus=0", {
+  const nowPlayingQuery = await fetch("https://itcinemabackend-production.up.railway.app/movie/getmovies?limit=10&sort=1&movieStatus=1", {
     method: "GET",
   }).catch(err => {
     alert("There seems to be a problem fetching items")
