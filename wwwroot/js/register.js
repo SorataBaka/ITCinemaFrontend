@@ -7,20 +7,23 @@
     if (!validateEmail(email)) {
         document.getElementById("error-message-email").innerHTML = "Invalid email format!";
         document.getElementById("error-message-email").className = "alert alert-danger";
+        return
     }
     if (!validateUsername(username)) {
         document.getElementById("error-message-username").innerHTML = "Username must have 6 characters or more";
         document.getElementById("error-message-username").className = "alert alert-danger";
+        return
     }
     if (!validatePassword(pass)) {
         document.getElementById("error-message-password").innerHTML = "Password must contains an alphabet, a number and 6 characters or more";
         document.getElementById("error-message-password").className = "alert alert-danger";
+        return
     }
     if (!validateCPassword(pass,cpass)) {
-        document.getElementById("error-message-cpassword").innerHTML = "Invalid email format!";
+        document.getElementById("error-message-cpassword").innerHTML = "Password and Confirm Password must be same";
         document.getElementById("error-message-cpassword").className = "alert alert-danger";
+        return 
     }
-
     if (validateEmail(email) && validateUsername(username) && validatePassword(pass) && validateCPassword(pass, cpass)) {
         var registerRequest = {
             Email: email,
@@ -40,7 +43,7 @@
         if (res.ResultCode == 200) {
             window.location.replace("/login")
         } else {
-            document.getElementById("error-message").innerHTML = "Login Failed";
+            document.getElementById("error-message").innerHTML = "Registration Failed. Please make sure your email has not been taken.";
             document.getElementById("error-message").className = "alert alert-danger";
         }
     }

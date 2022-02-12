@@ -18,7 +18,7 @@ const login = async () => {
         window.sessionStorage.setItem("token", res.Data.Token)
         window.location.replace("/")
   } else {
-      document.getElementById("error-message").innerHTML = "Login Failed";
+      document.getElementById("error-message").innerHTML = "Login Failed. Please make sure your email and password are correct.";
       document.getElementById("error-message").className = "alert alert-danger";
   }
 }
