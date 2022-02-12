@@ -117,18 +117,3 @@
   background-blend-mode: darken;
   background-color: rgba(70, 70, 70, 0.199)
 }
-/* width */
-::-webkit-scrollbar {
-  width: 20px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: honeydew;
-  border-radius: 10px;
-}

@@ -12,7 +12,7 @@
                     <a href="/movies?id=${movieData.MovieID}">
                         <img class="card-img-top" style="height: 20rem;" src="${movieData.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
                         <div class="card-body">
-                            <h5 <span style="margin: auto; id="">${movieData.MovieTitle}</span></h5>
+                            <h5>${movieData.MovieTitle}</h5>
                         </div>
                     </a>
                 </div>
@@ -34,7 +34,7 @@
                     <a href="/movies?id=${movieData2.MovieID}">
                         <img class="card-img-top" style="height: 20rem;" src="${movieData2.PosterURL}" alt="https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807">
                         <div class="card-body">
-                            <h5 <span id="">${movieData2.MovieTitle}</span></h5>
+                            <h5>${movieData2.MovieTitle}</h5>
                         </div>
                     </a>
                 </div>

@@ -36,3 +36,6 @@
 .button {
     width: unset;
 }
+.Dashboard-Button {
+    width: 200px;
+}

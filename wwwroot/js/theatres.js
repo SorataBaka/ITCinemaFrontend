@@ -28,7 +28,7 @@ async function getTheaterType1() {
 }
 
 async function getTheaterType2() {
-    const response = await fetch(`https://itcinemabackend-production.up.railway.app/theater/gettheaters?limit=-1&theaterType=2`);
+    const response = await fetch(`https://itcinemabackend-production.up.railway.app/theater/gettheaters?limit=-1&theaterType=2&sort=1`);
     const datasType2 = await response.json();
     return datasType2;
 }
