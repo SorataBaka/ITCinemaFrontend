@@ -43,7 +43,7 @@
 
     }
     if (!validatePassword(pass)) {
-        document.getElementById("error-message-password").innerHTML = "Password must contains an alphabet, a number and 6 characters or more";
+        document.getElementById("error-message-password").innerHTML = "Password must contain an alphabet, a number and is atleast 6 characters long";
         document.getElementById("error-message-password").className = "alert alert-danger";
 
     }
@@ -98,7 +98,7 @@ const validatePassword = (pass) => {
     return String(pass)
         .toLowerCase()
         .match(
-            /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{7,}$/
+            /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/
         )
 };
 const validateCPassword = (pass,cpass) => {
